@@ -1,0 +1,51 @@
+.btn-icon {
+    background-color: transparent;
+    border: none; /* Remove border if any */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+  
+  /* This will make sure there's no background or border for the toggle button */
+  .btn-icon.dropdown-toggle {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  /* This is to remove the default dropdown arrow */
+  .btn-icon.dropdown-toggle::after {
+    display: none;
+  }
+  
+  /* Additional styles to ensure the dots are positioned correctly */
+  .dropdown {
+    position: absolute;
+    top: 0.5rem; /* Adjust the top position as needed */
+    right: 0.5rem; /* Adjust the right position as needed */
+  }
+  
+  .dropdown-toggle {
+    padding: 0.25rem; /* Adjust padding as needed */
+  }
+  
+  .product-image {
+    width: 200px; /* Set the width you want */
+    height: 200px; /* Set the height you want */
+    object-fit: cover; /* This will cover the area without stretching the image */
+  }
+  
+  /* This will maintain the aspect ratio you want */
+  .aspect-ratio-box {
+    width: 100%;
+    padding-top: 100%; /* Equal width and height */
+    position: relative;
+  }
+  
+  .aspect-ratio-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

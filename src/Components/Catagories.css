@@ -1,0 +1,22 @@
+.product-image {
+    width: 200px; /* Set the width you want */
+    height: 200px; /* Set the height you want */
+    object-fit: cover; /* This will cover the area without stretching the image */
+  }
+  
+  /* This will maintain the aspect ratio you want */
+  .aspect-ratio-box {
+    width: 100%;
+    padding-top: 100%; /* Equal width and height */
+    position: relative;
+  }
+  
+  .aspect-ratio-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
