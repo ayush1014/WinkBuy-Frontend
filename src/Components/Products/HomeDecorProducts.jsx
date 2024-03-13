@@ -3,24 +3,24 @@ import NavbarUser from '../NavbarUser';
 import Footer from '../Footer';
 import api from '../../Config/axios';
 import { Link, useParams } from 'react-router-dom';
-import './ImageContainer.css'
 
-const typeName = {
-  Technology: [
-    { name: 'Phones', show: 'Phones'},
-    { name: 'Tablets', show: 'Tablets' },
-    { name: 'SmartDevices', show: 'Smart Devices' },
-    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories' },
-    { name: 'PhoneAccessories', show: 'Phone Accessories' },
-    { name: 'Laptops', show: 'Laptops'},
-    { name: 'Televisions', show: 'Televisions' },
-    { name: 'Monitors', show: 'Monitors' },
-    { name: 'Gaming', show: 'Gaming' },
-    { name: 'Softwares', show: 'Softwares' },
+const typeName ={
+  HomeAndDecor: [
+    { name: 'Furniture', show: 'Furnitures' },
+    { name: 'PhotoFrames', show: 'Photo Frames' },
+    { name: 'LivingRoom', show: 'Living Room' },
+    { name: 'Bathroom', show: 'Bathroom' },
+    { name: 'Bedroom', show: 'Bedroom' },
+    { name: 'Kitchen', show: 'Kitchen' },
+    { name: 'Lights', show: 'Lights'},
+    { name: 'Plants', show: 'Plants'},
+    { name: 'Decorations', show: 'Decorations' },
+    { name: 'HomeDecorGifts', show: 'Gifts' },
 ]
 }
 
-export default function Technology() {
+export default function HomeDecorProducts() {
+
   const [products, setProducts] = useState([]);
   const [recent, setRecent] = useState([]);
   const [catname, setCatname] = useState();
@@ -41,7 +41,7 @@ export default function Technology() {
   }, []);
 
   useEffect(() => {
-    const typeItem = typeName.Technology.find(item => item.name === type);
+    const typeItem = typeName.HomeAndDecor.find(item => item.name === type);
     if (typeItem) {
       setCatname(typeItem.show);
     }

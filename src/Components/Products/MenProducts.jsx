@@ -5,30 +5,31 @@ import api from '../../Config/axios';
 import { Link, useParams } from 'react-router-dom';
 import './ImageContainer.css'
 
-const typeName = {
-  Technology: [
-    { name: 'Phones', show: 'Phones'},
-    { name: 'Tablets', show: 'Tablets' },
-    { name: 'SmartDevices', show: 'Smart Devices' },
-    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories' },
-    { name: 'PhoneAccessories', show: 'Phone Accessories' },
-    { name: 'Laptops', show: 'Laptops'},
-    { name: 'Televisions', show: 'Televisions' },
-    { name: 'Monitors', show: 'Monitors' },
-    { name: 'Gaming', show: 'Gaming' },
-    { name: 'Softwares', show: 'Softwares' },
-]
-}
 
-export default function Technology() {
+const typeName = {Men: [
+  { name: 'MenTopwear' , show: 'Topwear'},
+  { name: 'MenBottomwear', show: 'Bottom Wear' },
+  { name: 'MenFootwear', show: 'Footwear' },
+  { name: 'MenSportsAndFitnessWear', show: 'Sports & Fitness Wear' },
+  { name: 'MenFashionAccessories', show: 'Fashion Accessories'},
+  { name: 'MenGifts', show: 'Gifts'},
+  { name: 'MenGadgets', show: 'Gadgets'},
+  { name: 'MenBagsAndBackpacks' , show: 'Bags & Backpacks'},
+]}
+
+
+export default function MenProducts() {
+
   const [products, setProducts] = useState([]);
   const [recent, setRecent] = useState([]);
   const [catname, setCatname] = useState();
   let { type } = useParams();
 
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        console.log('type: ', type)
         const response = await api.get(`/products/category/${type}`);
         setProducts(response.data);
         setRecent (response.data.slice(0,10));
@@ -41,7 +42,7 @@ export default function Technology() {
   }, []);
 
   useEffect(() => {
-    const typeItem = typeName.Technology.find(item => item.name === type);
+    const typeItem = typeName.Men.find(item => item.name === type);
     if (typeItem) {
       setCatname(typeItem.show);
     }

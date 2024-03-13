@@ -6,21 +6,18 @@ import { Link, useParams } from 'react-router-dom';
 import './ImageContainer.css'
 
 const typeName = {
-  Technology: [
-    { name: 'Phones', show: 'Phones'},
-    { name: 'Tablets', show: 'Tablets' },
-    { name: 'SmartDevices', show: 'Smart Devices' },
-    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories' },
-    { name: 'PhoneAccessories', show: 'Phone Accessories' },
-    { name: 'Laptops', show: 'Laptops'},
-    { name: 'Televisions', show: 'Televisions' },
-    { name: 'Monitors', show: 'Monitors' },
-    { name: 'Gaming', show: 'Gaming' },
-    { name: 'Softwares', show: 'Softwares' },
+  CarAccessories: [
+    { name: 'Cleaning', show: 'Cleaning' },
+    { name: 'Fragrance', show: 'Fragrance' },
+    { name: 'DashCams', show: 'Dash Cams' },
+    { name: 'PhoneHolders', show: 'Phone Holders' },
+    { name: 'Storage', show: 'Storage' },
+    { name: 'PhoneCharging', show: 'Phone Charging' },
+    { name: 'CarNeeds', show: 'Car Needs' },
 ]
 }
 
-export default function Technology() {
+export default function CarAccessories() {
   const [products, setProducts] = useState([]);
   const [recent, setRecent] = useState([]);
   const [catname, setCatname] = useState();
@@ -39,9 +36,9 @@ export default function Technology() {
 
     fetchProducts();
   }, []);
-
+  
   useEffect(() => {
-    const typeItem = typeName.Technology.find(item => item.name === type);
+    const typeItem = typeName.CarAccessories.find(item => item.name === type);
     if (typeItem) {
       setCatname(typeItem.show);
     }

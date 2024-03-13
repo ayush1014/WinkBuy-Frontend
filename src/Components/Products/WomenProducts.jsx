@@ -6,21 +6,22 @@ import { Link, useParams } from 'react-router-dom';
 import './ImageContainer.css'
 
 const typeName = {
-  Technology: [
-    { name: 'Phones', show: 'Phones'},
-    { name: 'Tablets', show: 'Tablets' },
-    { name: 'SmartDevices', show: 'Smart Devices' },
-    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories' },
-    { name: 'PhoneAccessories', show: 'Phone Accessories' },
-    { name: 'Laptops', show: 'Laptops'},
-    { name: 'Televisions', show: 'Televisions' },
-    { name: 'Monitors', show: 'Monitors' },
-    { name: 'Gaming', show: 'Gaming' },
-    { name: 'Softwares', show: 'Softwares' },
+  Women: [
+    { name: 'Dresses', show: 'Dressess'},
+    { name: 'TopsTeesAndShirts', show: 'Tops, Tees & Shirts'},
+    { name: 'WomenBottomwear', show: 'Bottomwear'},
+    { name: 'WomenFootwear', show: 'Footwear' },
+    { name: 'WomenHoodiesAndOuterwears', show: 'Hoodies & Outerwears' },
+    { name: 'WomenGifts', show: 'Gifts'},
+    { name: 'WomenSportsAndFitnessWear', show: 'Sports & Fitness Wear' },
+    { name: 'BeautyAndPersonalCare', show: 'Beauty & Personal Care'},
+    { name: 'WomenFashionAccessories', show: 'Fashion Accessories' },
+    { name: 'BagsPursesAndHandbags', show: 'Purses & Handbags' },
 ]
 }
 
-export default function Technology() {
+export default function WomenProducts() {
+
   const [products, setProducts] = useState([]);
   const [recent, setRecent] = useState([]);
   const [catname, setCatname] = useState();
@@ -41,7 +42,7 @@ export default function Technology() {
   }, []);
 
   useEffect(() => {
-    const typeItem = typeName.Technology.find(item => item.name === type);
+    const typeItem = typeName.Women.find(item => item.name === type);
     if (typeItem) {
       setCatname(typeItem.show);
     }
@@ -81,7 +82,7 @@ export default function Technology() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-2xl px-4 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">All {catname}</h2>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
