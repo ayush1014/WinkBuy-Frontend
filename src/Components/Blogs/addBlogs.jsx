@@ -76,6 +76,8 @@ export default function AddBlogs() {
     const [coverPhotoLink, setCoverPhotoLink] = useState('');
     const [coverPhotoOption, setCoverPhotoOption] = useState('upload');
     const [coverPhotoPreview, setCoverPhotoPreview] = useState('');
+    const [blogSummary, setBlogSummary] = useState('');
+
 
     const [blogSections, setBlogSections] = useState([
         { blogName: '', blogBody: '', blogPhotos: '', file: null, preview: '', photoOption: 'upload' },
@@ -153,6 +155,7 @@ export default function AddBlogs() {
         setIsLoading(true);
         const formData = new FormData();
         formData.append('blogTitle', blogTitle);
+        formData.append('blogSummary', blogSummary);
         formData.append('category', category);
         if (coverPhotoOption === 'upload' && coverPhoto) {
             formData.append('blogCoverPhoto', coverPhoto);
@@ -256,7 +259,22 @@ export default function AddBlogs() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="sm:col-span-3">
+                            <div className="mt-10 sm:col-span-4">
+                                <label htmlFor="blogSummary" className="block text-sm font-medium text-gray-900">
+                                    Blog Summary
+                                </label>
+                                        {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span> */}
+                                        <ReactQuill
+                                            theme="snow"
+                                            value={blogSummary}
+                                            onChange={setBlogSummary} // Adjust accordingly if you're handling the change differently
+                                            modules={modules}
+                                            formats={formats}
+                                            placeholder="Enter a short summary of the blog"
+                                            style={{ height: 'auto', marginBottom: '30px' }}
+                                        />
+                            </div>
+                            <div className="sm:col-span-3 mt-3">
                                 <label className="block text-sm font-medium leading-6 text-gray-900">Cover Photo Option</label>
                                 <div className="mt-2">
                                     <button type="button" onClick={() => setCoverPhotoOption('upload')} className={`px-4 py-2 rounded-md ${coverPhotoOption === 'upload' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'} mr-2`}>Upload Photo</button>
