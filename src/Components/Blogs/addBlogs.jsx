@@ -72,8 +72,13 @@ export default function AddBlogs() {
     const [blogPhotos, setBlogPhotos] = useState('');
     const [file, setFile] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [coverPhoto, setCoverPhoto] = useState(null);
+    const [coverPhotoLink, setCoverPhotoLink] = useState('');
+    const [coverPhotoOption, setCoverPhotoOption] = useState('upload');
+    const [coverPhotoPreview, setCoverPhotoPreview] = useState('');
+
     const [blogSections, setBlogSections] = useState([
-        { blogName: '', blogBody: '', blogPhotos: '', file: null, preview: '' },
+        { blogName: '', blogBody: '', blogPhotos: '', file: null, preview: '', photoOption: 'upload' },
     ]);
 
     const addBlogSection = () => {
@@ -91,6 +96,13 @@ export default function AddBlogs() {
         updatedSections.splice(index, 1);
         setBlogSections(updatedSections);
     };
+
+    const handlePhotoOptionChange = (index, option) => {
+        const updatedSections = [...blogSections];
+        updatedSections[index].photoOption = option;
+        setBlogSections(updatedSections);
+    };
+
 
 
     const handleCategoryChange = (e) => {
@@ -114,17 +126,25 @@ export default function AddBlogs() {
 
 
     const handlePhotoLinkChange = (e, index) => {
-        console.log('Index:', index, 'Current Sections:', blogSections);
         const { value } = e.target;
         const updatedSections = [...blogSections];
         updatedSections[index].blogPhotos = value;
+        // Clear the file and preview URL since a link is provided
+        updatedSections[index].file = null;
+        updatedSections[index].preview = '';
         setBlogSections(updatedSections);
     };
 
     const handleRemoveImage = (index) => {
         const updatedSections = [...blogSections];
+        updatedSections[index].blogPhotos = ''; // Clear the photo link
         updatedSections[index].file = null; // Clear the file from the section
         updatedSections[index].preview = ''; // Clear the preview URL
+        // Reset the input value
+        const inputElement = document.getElementById(`photo-link-${index}`);
+        if (inputElement) {
+            inputElement.value = '';
+        }
         setBlogSections(updatedSections);
     };
 
@@ -134,6 +154,11 @@ export default function AddBlogs() {
         const formData = new FormData();
         formData.append('blogTitle', blogTitle);
         formData.append('category', category);
+        if (coverPhotoOption === 'upload' && coverPhoto) {
+            formData.append('blogCoverPhoto', coverPhoto);
+        } else if (coverPhotoOption === 'link') {
+            formData.append('blogCoverPhoto', coverPhotoLink);
+        }
 
         // Serialize blog sections as JSON
         formData.append('blogSections', JSON.stringify(blogSections.map(section => ({
@@ -231,6 +256,119 @@ export default function AddBlogs() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="sm:col-span-3">
+                                <label className="block text-sm font-medium leading-6 text-gray-900">Cover Photo Option</label>
+                                <div className="mt-2">
+                                    <button type="button" onClick={() => setCoverPhotoOption('upload')} className={`px-4 py-2 rounded-md ${coverPhotoOption === 'upload' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'} mr-2`}>Upload Photo</button>
+                                    <button type="button" onClick={() => setCoverPhotoOption('link')} className={`px-4 py-2 rounded-md ${coverPhotoOption === 'link' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}`}>Photo Link</button>
+                                </div>
+                            </div>
+
+                            {coverPhotoOption === 'upload' && (
+                                <div className="col-span-full">
+                                    <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
+                                        Blog Cover photo
+                                    </label>
+                                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                        {!coverPhotoPreview && (
+                                            <div className="text-center">
+                                                <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
+                                                <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                                                    <label
+                                                        htmlFor="cover-file-upload"
+                                                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                                    >
+                                                        <span>Upload a file</span>
+                                                        <input
+                                                            id="cover-file-upload"
+                                                            name="cover-file-upload"
+                                                            type="file"
+                                                            onChange={(e) => {
+                                                                const file = e.target.files[0];
+                                                                setCoverPhoto(file);
+                                                                setCoverPhotoPreview(URL.createObjectURL(file));
+                                                            }}
+                                                            className="sr-only"
+                                                        />
+                                                    </label>
+                                                    <p className="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 5MB</p>
+                                            </div>
+                                        )}
+
+                                        {coverPhotoPreview && (
+                                            <div className="mt-2 flex flex-col items-center justify-center">
+                                                <img
+                                                    src={coverPhotoPreview}
+                                                    alt="Cover Preview"
+                                                    className="object-cover w-50 max-w-sm"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        setCoverPhoto(null);
+                                                        setCoverPhotoPreview('');
+                                                    }}
+                                                    className="mt-2 rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full max-w-xs"
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+
+
+                            {coverPhotoOption === 'link' && (
+                                <div className="col-span-full mt-10">
+                                    {coverPhotoLink === '' && (
+                                        <div>
+                                            <label htmlFor="cover-photo-link" className="block text-sm font-medium leading-6 text-gray-900">
+                                                Blog Cover Photo Link
+                                            </label>
+                                            <div className="mt-2 flex items-center">
+                                                <input
+                                                    type="text"
+                                                    name="cover-photo-link"
+                                                    id="cover-photo-link"
+                                                    autoComplete="photo-link"
+                                                    onChange={(e) => {
+                                                        setCoverPhotoLink(e.target.value);
+                                                        setCoverPhotoPreview(e.target.value); // Automatically update the preview based on the link
+                                                    }}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    placeholder="https://example.com/photo.jpg"
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                                    {coverPhotoLink && (
+                                        <div className="mt-4 flex flex-col items-center justify-center ">
+                                            <img
+                                                src={coverPhotoPreview}
+                                                alt="Cover Preview"
+                                                className="object-cover w-80 h-80 rounded-md"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setCoverPhotoLink('');
+                                                    setCoverPhotoPreview('');
+                                                }}
+                                                className="mt-2 rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full max-w-xs"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+
+
+
                             {
                                 blogSections.map((section, index) => (
                                     <div key={index} className="space-y-6 bg-white p-4 mt-14 shadow sm:rounded-md">
@@ -272,15 +410,15 @@ export default function AddBlogs() {
                                             <div className="mt-2">
                                                 <button
                                                     type="button"
-                                                    className={`px-4 py-2 rounded-md ${photoOption === 'upload' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'} mr-2`}
-                                                    onClick={() => setPhotoOption('upload')}
+                                                    className={`px-4 py-2 rounded-md ${section.photoOption === 'upload' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'} mr-2`}
+                                                    onClick={() => handlePhotoOptionChange(index, 'upload')}
                                                 >
                                                     Upload Photo
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    className={`px-4 py-2 rounded-md ${photoOption === 'link' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}`}
-                                                    onClick={() => setPhotoOption('link')}
+                                                    className={`px-4 py-2 rounded-md ${section.photoOption === 'link' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}`}
+                                                    onClick={() => handlePhotoOptionChange(index, 'link')}
                                                 >
                                                     Photo Link
                                                 </button>
@@ -288,7 +426,7 @@ export default function AddBlogs() {
                                         </div>
 
 
-                                        {photoOption === 'upload' ? (<div className="col-span-full">
+                                        {section.photoOption === 'upload' ? (<div className="col-span-full">
                                             <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
                                                 Blog Product photo
                                             </label>
@@ -333,20 +471,40 @@ export default function AddBlogs() {
 
                                             </div>
                                         </div>) : (<div className="col-span-full mt-10">
-                                            <label htmlFor="photo-link" className="block text-sm font-medium leading-6 text-gray-900">
-                                                Product Photo Link
-                                            </label>
-                                            <div className="mt-2">
-                                                <input
-                                                    type="text"
-                                                    name={`photo-link-${index}`}
-                                                    id={`photo-link-${index}`}
-                                                    autoComplete="photo-link"
-                                                    onChange={(e) => handlePhotoLinkChange(e, index)}
-                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                    placeholder="https://example.com/photo.jpg"
-                                                />
-                                            </div>
+                                            {blogSections[index].blogPhotos === '' && (
+                                                <div>
+                                                    <label htmlFor={`photo-link-${index}`} className="block text-sm font-medium leading-6 text-gray-900">
+                                                        Product Photo Link
+                                                    </label>
+                                                    <div className="mt-2 flex items-center">
+                                                        <input
+                                                            type="text"
+                                                            name={`photo-link-${index}`}
+                                                            id={`photo-link-${index}`}
+                                                            autoComplete="photo-link"
+                                                            onChange={(e) => handlePhotoLinkChange(e, index)}
+                                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                            placeholder="https://example.com/photo.jpg"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {blogSections[index].blogPhotos && (
+                                                <div className="mt-2 flex flex-col items-center justify-center ">
+                                                    <img
+                                                        src={blogSections[index].blogPhotos}
+                                                        alt="Preview"
+                                                        className="object-cover w-80 h-80 rounded-md"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleRemoveImage(index)}
+                                                        className="mt-2 rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full max-w-xs"
+                                                    >
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            )}
                                         </div>)}
                                         <div>
                                             {index > 0 && (

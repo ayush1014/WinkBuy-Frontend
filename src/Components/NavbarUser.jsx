@@ -95,11 +95,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const NavigationLink = ({ name, activeIndex, onHover }) => {
+const NavigationLink = ({ name, activeIndex, onHover, onClick }) => {
+  const navigate = useNavigate();
+  const handleWinkBlogs = ()=>{
+    navigate('/blogs')
+  }
   return (
     <button
       onMouseEnter={() => onHover(name)}
       onMouseLeave={() => onHover(null)}
+      onClick={handleWinkBlogs}
       className="relative text-sm font-semibold leading-6 text-gray-900 group"
     >
       {name}
@@ -137,6 +142,10 @@ export default function NavbarUser() {
     navigate('/login')
   }
 
+  const handleWinkBlogs = ()=>{
+    navigate('/blogs')
+  }
+  
   return (
     <div>
 
@@ -162,7 +171,7 @@ export default function NavbarUser() {
               </div>
 
               <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} />
+                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} onClick={handleWinkBlogs}/>
                 <Popover className="relative">
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('men')} // 'men' is a unique identifier for the Men button

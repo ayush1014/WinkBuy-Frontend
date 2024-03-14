@@ -19,6 +19,7 @@ import HomeDecorProducts from './Components/Products/HomeDecorProducts';
 import CarAccessories from './Components/Products/CarAccessories';
 import AddBlogs from './Components/Blogs/addBlogs';
 import 'react-quill/dist/quill.snow.css';
+import Blogs from './Components/Blogs/Blogs';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path='/health/:type' element={<Health />} />
           <Route path='/carAccessories/:type' element={<CarAccessories/>} />
           <Route path='/productDetail/:product_id' element={<ProductDetail/>}/>
+          <Route path='/blogs' element={<Blogs/>}/>
 
 
 

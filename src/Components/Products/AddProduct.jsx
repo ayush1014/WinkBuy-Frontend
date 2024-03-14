@@ -115,11 +115,14 @@ export default function AddProduct() {
 
     const handleRemoveFile = () => {
         setFile(null);
-        setPreview('');
+        setPreview(''); // Clear the preview when removing the file or link
+        setPhotoLink(''); // Clear the photo link input field
     };
 
     const handlePhotoLinkChange = (e) => {
-        setPhotoLink(e.target.value);
+        const link = e.target.value;
+        setPhotoLink(link);
+        setPreview(link); // Set the link as the preview source
     };
 
     const handleSubmit = async (e) => {
@@ -380,6 +383,24 @@ export default function AddProduct() {
                                         ) : (
                                             // Show preview and remove button if preview is available
                                             <div className="mt-2 flex flex-col items-center justify-center ">
+                                                <img
+                                                    src={preview}
+                                                    alt="Preview"
+                                                    className="object-cover w-50 max-w-sm" // Adjusted classes for responsiveness
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={handleRemoveFile}
+                                                    className="mt-2 rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full max-w-xs" // Adjusted classes for full width on small containers
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>) : (<div className="col-span-full mt-10">
+                                    {preview && (
+                                        <div className="mt-2 flex flex-col items-center justify-center ">
                                             <img
                                                 src={preview}
                                                 alt="Preview"
@@ -387,29 +408,35 @@ export default function AddProduct() {
                                             />
                                             <button
                                                 type="button"
-                                                onClick={handleRemoveFile}
+                                                onClick={() => {
+                                                    handleRemoveFile();
+                                                    setPhotoLink('');
+                                                }}
                                                 className="mt-2 rounded-md bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full max-w-xs" // Adjusted classes for full width on small containers
                                             >
                                                 Remove
                                             </button>
                                         </div>
-                                        )}
-                                    </div>
-                                </div>) : (<div className="col-span-full mt-10">
-                                    <label htmlFor="photo-link" className="block text-sm font-medium leading-6 text-gray-900">
-                                        Product Photo Link
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                            type="text"
-                                            name="photo-link"
-                                            id="photo-link"
-                                            autoComplete="photo-link"
-                                            onChange={handlePhotoLinkChange}
-                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="https://example.com/photo.jpg"
-                                        />
-                                    </div>
+                                    )}
+
+                                    {!preview && (
+                                        <>
+                                            <label htmlFor="photo-link" className="block text-sm font-medium leading-6 text-gray-900">
+                                                Product Photo Link
+                                            </label>
+                                            <div className="mt-2">
+                                                <input
+                                                    type="text"
+                                                    name="photo-link"
+                                                    id="photo-link"
+                                                    autoComplete="photo-link"
+                                                    onChange={handlePhotoLinkChange}
+                                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                    placeholder="https://example.com/photo.jpg"
+                                                />
+                                            </div>
+                                        </>
+                                    )}
                                 </div>)}
                             </div>
                         </div>
