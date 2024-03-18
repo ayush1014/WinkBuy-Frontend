@@ -12,7 +12,7 @@ import api from '../../Config/axios';
 import './RecentDrops.css'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { HeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function RecentDrops() {
@@ -25,6 +25,8 @@ function RecentDrops() {
     const [productDrop, setProductDrop] = useState([])
     const navigate = useNavigate();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [addedToWishlist, setAddedToWishlist] = useState(new Set());
+    const [showPopup, setShowPopup] = useState({ show: false, message: '' });
 
     useEffect(() => {
         async function fetchProducts() {
@@ -41,41 +43,104 @@ function RecentDrops() {
         fetchProducts()
     }, [])
 
-
-    const handleWishlistIconClick = async (event, productId) => {
-        event.stopPropagation(); 
-        event.preventDefault(); 
-      
-        if (!isUserLoggedIn) {
-          navigate('/login');
-          return;
-        }
-      
+    useEffect(() => {
         const userSession = sessionStorage.getItem('User');
-        const user = JSON.parse(userSession); 
-      
-        if (!user || !user.username) {
-          console.error('User session not found or invalid');
-          return;
+        if (userSession) {
+            setIsUserLoggedIn(true);
+            const user = JSON.parse(userSession);
+            const fetchWishlist = async () => {
+                try {
+                    const response = await api.get(`/user/${user.username}`);
+                    const wishlistProductIds = new Set(response.data.map(item => item.productId));
+                    setAddedToWishlist(wishlistProductIds);
+                } catch (error) {
+                    console.error('Error fetching wishlist:', error);
+                }
+            };
+            fetchWishlist();
+        } else {
+            setIsUserLoggedIn(false);
         }
-      
-        try {
-          const response = await api.post('/add', {
-            userId: user.username,
-            productId: productId
-          });
-      
-          if (response.status === 201) {
-            console.log('Added to wishlist', response.data);
-          } else {
-            console.error('Unexpected response adding to wishlist:', response);
-          }
-        } catch (error) {
-          console.error('Error adding to wishlist:', error);
-        }
-      };
+    }, []);
 
-      
+    const toggleWishlistStatus = async (event, productId) => {
+        event.preventDefault();
+        if (!isUserLoggedIn) {
+            navigate('/login');
+            return;
+        }
+    
+        const userSession = sessionStorage.getItem('User');
+        const user = JSON.parse(userSession);
+    
+        const isInWishlist = addedToWishlist.has(productId);
+        const endpoint = isInWishlist ? '/remove' : '/add'; // Ensure endpoint matches your backend
+        const method = isInWishlist ? 'delete' : 'post';
+    
+        try {
+            const response = await api({
+                method,
+                url: endpoint,
+                data: {
+                    userId: user.username,
+                    productId: productId,
+                },
+            });
+    
+            if (response.status === 200 || response.status === 201) {
+                const newWishlist = new Set(addedToWishlist);
+                if (isInWishlist) {
+                    newWishlist.delete(productId);
+                } else {
+                    newWishlist.add(productId);
+                }
+                setAddedToWishlist(newWishlist);
+                setShowPopup({ show: true, message: isInWishlist ? 'Removed from wishlist!' : 'Added to wishlist!' });
+            }
+        } catch (error) {
+            console.error('Error toggling wishlist status:', error);
+            setShowPopup({ show: true, message: error.response?.data?.message || 'Error processing your request' });
+        } finally {
+            setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
+        }
+    };
+    
+
+
+    // const handleWishlistIconClick = async (event, productId) => {
+    //     event.stopPropagation();
+    //     event.preventDefault();
+
+    //     if (!isUserLoggedIn) {
+    //         navigate('/login');
+    //         return;
+    //     }
+
+    //     const userSession = sessionStorage.getItem('User');
+    //     const user = JSON.parse(userSession);
+
+    //     if (!user || !user.username) {
+    //         console.error('User session not found or invalid');
+    //         return;
+    //     }
+
+    //     try {
+    //         const response = await api.post('/add', {
+    //             userId: user.username,
+    //             productId: productId
+    //         });
+
+    //         if (response.status === 201) {
+    //             console.log('Added to wishlist', response.data);
+    //         } else {
+    //             console.error('Unexpected response adding to wishlist:', response);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error adding to wishlist:', error);
+    //     }
+    // };
+
+
     useEffect(() => {
         const user = sessionStorage.getItem('User');
         setIsUserLoggedIn(!!user);
@@ -155,6 +220,11 @@ function RecentDrops() {
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-24">
+                {showPopup.show && (
+                    <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
+                        {showPopup.message}
+                    </div>
+                )}
                 <h2 className="text-2xl py-2 font-bold tracking-tight text-gray-900">Recent Drops on Wink Buy</h2>
                 <Carousel
                     swipeable={true}
@@ -184,11 +254,17 @@ function RecentDrops() {
                             </div>
                             <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
                             <p className="mt-1 text-xs font-medium text-gray-900">{product.categoryId}</p>
-                            <HeartIcon
-                                className="h-8 w-8 text-red-600 absolute top-3 right-3 cursor-pointer"
-                                onClick={(event) => handleWishlistIconClick(event, product.product_id)}
-                                aria-hidden="true"
-                            />
+                            {addedToWishlist.has(product.product_id) ? (
+                                <div className="absolute top-3 right-3">
+                                    <TrashIcon className="h-6 w-6 text-gray-600 cursor-pointer" onClick={(event) => toggleWishlistStatus(event, product.product_id)} />
+                                </div>
+                            ) : (
+                                <HeartIcon
+                                    className="h-8 w-8 text-red-600 absolute top-3 right-3 cursor-pointer"
+                                    onClick={(event) => toggleWishlistStatus(event, product.product_id)}
+                                    aria-hidden="true"
+                                />
+                            )}
                         </a>
                     ))}
                 </Carousel>

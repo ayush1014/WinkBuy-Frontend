@@ -74,42 +74,45 @@ export default function Health() {
   const toggleWishlistStatus = async (event, productId) => {
     event.preventDefault();
     if (!isUserLoggedIn) {
-      navigate('/login');
-      return;
+        navigate('/login');
+        return;
     }
 
     const userSession = sessionStorage.getItem('User');
     const user = JSON.parse(userSession);
 
-    const method = addedToWishlist.has(productId) ? 'delete' : 'post';
-    const endpoint = method === 'delete' ? '/remove' : '/add'; // Adjust these endpoints as per your API structure
+    const isInWishlist = addedToWishlist.has(productId);
+    const endpoint = isInWishlist ? '/remove' : '/add'; // Ensure endpoint matches your backend
+    const method = isInWishlist ? 'delete' : 'post';
 
     try {
-      const response = await api[method](endpoint, {
-        userId: user.username,
-        productId: productId,
-      });
+        const response = await api({
+            method,
+            url: endpoint,
+            data: {
+                userId: user.username,
+                productId: productId,
+            },
+        });
 
-      if (response.status === 201) {
-        const newWishlist = new Set(addedToWishlist);
-        if (method === 'delete') {
-          newWishlist.delete(productId);
-        } else {
-          newWishlist.add(productId);
+        if (response.status === 200 || response.status === 201) {
+            const newWishlist = new Set(addedToWishlist);
+            if (isInWishlist) {
+                newWishlist.delete(productId);
+            } else {
+                newWishlist.add(productId);
+            }
+            setAddedToWishlist(newWishlist);
+            setShowPopup({ show: true, message: isInWishlist ? 'Removed from wishlist!' : 'Added to wishlist!' });
         }
-        setAddedToWishlist(newWishlist);
-        setShowPopup({ show: true, message: method === 'delete' ? 'Removed from wishlist!' : 'Added to wishlist!' });
-      }
     } catch (error) {
-      if (error.response?.status === 409) {
-        setShowPopup({ show: true, message: error.response.data.message });
-      } else {
         console.error('Error toggling wishlist status:', error);
-      }
+        setShowPopup({ show: true, message: error.response?.data?.message || 'Error processing your request' });
     } finally {
-      setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
+        setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
     }
-  };
+};
+
 
 
   return (

@@ -101,7 +101,7 @@ const NavigationLink = ({ name, activeIndex, onHover, onClick }) => {
         onMouseEnter={() => onHover(name)}
         onMouseLeave={() => onHover(null)}
         onClick={handleWinkBlogs}
-        className="relative text-sm font-semibold leading-6 text-gray-900 group"
+        className="relative text-md font-semibold leading-6 text-gray-900 group"
       >
         {name}
         <span
@@ -159,6 +159,15 @@ export default function NavbarUser() {
     navigate('/');
   };
 
+  const handleWishlist = () => {
+    if (!isUserLoggedIn){
+      navigate('/login')
+    }
+    else{
+      navigate('/wishlist')
+    }
+  }
+
   return (
     <div>
 
@@ -189,7 +198,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('men')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Men
                     <span
@@ -242,7 +251,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('women')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Women
                     <span
@@ -296,7 +305,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('homeanddecor')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Home & Decor
                     <span
@@ -350,7 +359,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('tech')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Technology
                     <span
@@ -405,7 +414,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('healthandfitness')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Health & Fitness
                     <span
@@ -459,7 +468,7 @@ export default function NavbarUser() {
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('carAccessories')} // 'men' is a unique identifier for the Men button
                     onMouseLeave={() => handlePopoverToggle(null)}
-                    className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 relative group"
+                    className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900 relative group"
                   >
                     Automotive Accessories
                     <span
@@ -579,7 +588,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Men
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -591,8 +600,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -604,7 +614,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Women
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -616,8 +626,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -629,7 +640,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Home & Decor
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -641,8 +652,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -654,7 +666,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Technology
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -666,8 +678,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -679,7 +692,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Health & Fitness
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -691,8 +704,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -704,7 +718,7 @@ export default function NavbarUser() {
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Automotive Accessories
                                 <ChevronDownIcon
                                   className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -716,8 +730,9 @@ export default function NavbarUser() {
                                   <Disclosure.Button
                                     key={item.name}
                                     as="a"
+                                    style={{ textDecoration: 'none' }}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
                                   </Disclosure.Button>
@@ -726,35 +741,28 @@ export default function NavbarUser() {
                             </>
                           )}
                         </Disclosure>
-
-                        {/* <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Company
-                </a> */}
-                        {/* <a
-                      href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Recent Drop
-                    </a>
-                    <a
-                      href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Trending Deals
-                    </a> */}
                       </div>
                       <div className="py-6">
                         <a
                           href="#"
-                          className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          onClick={handleLogin}
+                          className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={handleWishlist}
+                          style={{ textDecoration: 'none' }}
                         >
-                          Log in
+                          Wishlist
                         </a>
                       </div>
+                      {
+                        isUserLoggedIn ? (
+                          <button className="text-md font-semibold leading-6 text-gray-900" onClick={handleSignOut}>
+                            Sign out <span aria-hidden="true">&rarr;</span>
+                          </button>
+                        ) : (
+                          <button className="text-md font-semibold leading-6 text-gray-900" onClick={handleLogin}>
+                            Log in <span aria-hidden="true">&rarr;</span>
+                          </button>
+                        )
+                      }
                     </div>
                   </div>
                 </Dialog.Panel>

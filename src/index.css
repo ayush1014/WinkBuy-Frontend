@@ -45,3 +45,6 @@ div.flex.items-center a:hover {
   transition: color 0.3s ease; /* Smooth transition for color */
 }
 
+*{
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
