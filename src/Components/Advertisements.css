@@ -1,13 +1,27 @@
+
 .carousel-container {
-    height: 20vh;
     width: 100%;
     overflow: hidden;
-}
-
-.carousel-image {
+    position: relative;
+  }
+  
+  .carousel-container::before {
+    content: "";
+    display: block;
+    /* padding-top: 56.25%; */
+    background-color: #fff; /* Optional: background color */
+  }
+  
+  .carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50vh;
-    object-fit: contain; 
-    background-color: #fff;
-}
-
+    height: 10%;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover; /* Cover ensures the image fills the area, may crop */
+  }
