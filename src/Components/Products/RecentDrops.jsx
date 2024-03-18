@@ -225,7 +225,7 @@ function RecentDrops() {
                         {showPopup.message}
                     </div>
                 )}
-                <h2 className="text-2xl py-2 font-bold tracking-tight text-gray-900">Recent Drops on Wink Buy</h2>
+                <h2 className="text-2xl py-2 font-semibold tracking-tight text-gray-900">Recent Drops on Wink Buy</h2>
                 <Carousel
                     swipeable={true}
                     draggable={true}

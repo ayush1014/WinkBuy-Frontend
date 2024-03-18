@@ -28,7 +28,7 @@ export default function RecentBlogs() {
         <>
             <div className="bg-white py- sm:py-1">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <h2 className="text-2xl font-bold tracking-tight text-gray-900">Recent Drops on Wink Blogs</h2>
+                    <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Recent Drops on Wink Blogs</h2>
                     <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         {posts.map((post) => (
                             <article key={post.blog} className="flex flex-col items-start justify-between">
