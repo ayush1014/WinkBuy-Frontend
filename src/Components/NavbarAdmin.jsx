@@ -95,23 +95,31 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const NavigationLink = ({ name, activeIndex, onHover }) => {
+const NavigationLink = ({ name, activeIndex, onHover, onClick }) => {
+  const navigate = useNavigate();
+  const handleWinkBlogs = ()=>{
+    console.log("Navigateing to: blogs")
+    navigate('/blogs')
+  }
   return (
-    <button
-      onMouseEnter={() => onHover(name)}
-      onMouseLeave={() => onHover(null)}
-      className="relative text-sm font-semibold leading-6 text-gray-900 group"
-    >
-      {name}
-      <span
-        className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transition-transform duration-200 ${activeIndex === name ? 'scale-x-100' : 'scale-x-0'}`}
-        aria-hidden="true"
-      />
-    </button>
+    <a href={`/blogs`}>
+      <button
+        onMouseEnter={() => onHover(name)}
+        onMouseLeave={() => onHover(null)}
+        onClick={handleWinkBlogs}
+        className="relative text-sm font-semibold leading-6 text-gray-900 group"
+      >
+        {name}
+        <span
+          className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transition-transform duration-200 ${activeIndex === name ? 'scale-x-100' : 'scale-x-0'}`}
+          aria-hidden="true"
+        />
+      </button>
+    </a>
   );
 };
 
-export default function NavbarUser() {
+export default function NavbarAdmin() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(null);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1124);
@@ -134,7 +142,11 @@ export default function NavbarUser() {
   const navigate = useNavigate()
 
   const handleLogin = () => {
-    navigate('/AdminLogin')
+    navigate('/login')
+  }
+
+  const handleWinkBlogs = () => {
+    navigate('/blogs')
   }
 
   return (
@@ -145,7 +157,7 @@ export default function NavbarUser() {
           <header className="bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
               <div className="flex lg:flex-1">
-                <a href="/admin" className="-m-1.5 p-1.5">
+                <a href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">Your Company</span>
                   <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
                 </a>
@@ -162,7 +174,7 @@ export default function NavbarUser() {
               </div>
 
               <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} />
+                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} onClick={()=>handleWinkBlogs} />
                 <Popover className="relative">
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('men')} // 'men' is a unique identifier for the Men button
@@ -526,7 +538,7 @@ export default function NavbarUser() {
                 <div className="fixed inset-0 z-10" />
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                   <div className="flex items-center justify-between">
-                    <a href="/admin" className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5">
                       <span className="sr-only">Your Company</span>
                       <img
                         className="h-8 w-auto"

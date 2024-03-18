@@ -1,12 +1,47 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.7); /* White background with opacity */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* Make sure it's above everything else */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+a.group {
+  text-decoration: none;
+  color: black;
+}
+
+.group h3 a {
+  text-decoration: none;
+  color: #1a202c;
+  background-color: transparent;
+}
+
+.group h3 a:hover {
+  text-decoration: underline;
+  color: #4a5568;
+}
+
+div.flex.items-center a {
+  text-decoration: none;
+  color: #4B5563;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+div.flex.items-center a:hover {
+  background-color: #F3F4F6;
+}
+
+/* This rule will target all anchor tags within the element with a class of 'grid' */
+.grid a {
+  text-decoration: none; /* Removes the underline */
+  color: #374151; /* Dark gray color; change as needed */
+  transition: color 0.3s ease; /* Smooth transition for color */
+}
+

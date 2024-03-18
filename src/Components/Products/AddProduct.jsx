@@ -4,6 +4,64 @@ import { useState } from 'react'
 import NavbarAdmin from '../NavbarAdmin'
 import api from '../../Config/axios'
 import { BounceLoader } from 'react-spinners';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+function insertTable(quill, rows = 2, columns = 2) {
+    const range = quill.getSelection(true);
+    if (range) {
+        // Move cursor to next line
+        let insertAt = range.index + 1;
+        const tableHTML = generateTableHTML(rows, columns);
+        quill.clipboard.dangerouslyPasteHTML(insertAt, tableHTML);
+    }
+}
+
+function generateTableHTML(rows, columns) {
+    let table = '<table border="1" style="width:100%;">';
+    for (let r = 0; r < rows; r++) {
+        table += '<tr>';
+        for (let c = 0; c < columns; c++) {
+            table += '<td>&nbsp;</td>';
+        }
+        table += '</tr>';
+    }
+    table += '</table><p><br></p>';
+    return table;
+}
+
+const modules = {
+    toolbar: {
+        container: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ size: [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'indent': '-1' }, { 'indent': '+1' }],
+            [{ 'align': [] }],
+            ['link', 'image', 'video'],
+            [{ 'color': [] }, { 'background': [] }],
+            ['clean'],
+            ['insertTable'] // Custom button in the toolbar
+        ],
+        handlers: {
+            insertTable: function () {
+                insertTable(this.quill);
+            }
+        }
+    }
+};
+
+const formats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 'video',
+    'align',
+    'color', 'background', // Text color and background
+    'table' // Table format
+];
+
 
 const productTypes = {
     Men: [
@@ -84,6 +142,7 @@ export default function AddProduct() {
     const [productRatingVol, setProductRatingVol] = useState();
     const [productPrice, setProductPrice] = useState();
     const [productDescription, setProductDescription] = useState();
+    const [winkReviews, setWinkReviews] = useState();
     const [productLink, setProductLink] = useState();
     const [photoLink, setPhotoLink] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -131,6 +190,7 @@ export default function AddProduct() {
         const formData = new FormData();
         formData.append('product_name', productName);
         formData.append('product_Description', productDescription);
+        formData.append('winkReviews', winkReviews);
         formData.append('product_Price', productPrice);
         formData.append('rating', productRating);
         formData.append('rating_count', productRatingVol);
@@ -307,7 +367,7 @@ export default function AddProduct() {
                                 </div>
 
 
-                                <div className="col-span-full">
+                                {/* <div className="col-span-full">
                                     <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                                         Product Description
                                     </label>
@@ -319,6 +379,45 @@ export default function AddProduct() {
                                             onChange={(e) => { setProductDescription(e.target.value) }}
                                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             defaultValue={''}
+                                        />
+                                    </div>
+                                    <p className="mt-3 text-sm leading-6 text-gray-600">Please provide the description of the product.</p>
+                                </div> */}
+
+                                <div className="col-span-full">
+                                    <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
+                                        Product Description
+                                    </label>
+                                    <div className="mt-2">
+                                        <ReactQuill
+                                            theme="snow"
+                                            id="about"
+                                            value={productDescription}
+                                            // onChange={setProductDescription}
+                                            modules={modules}
+                                            formats={formats}
+                                            placeholder="Product Description"
+                                            onChange={(content, delta, source, editor) => setProductDescription(editor.getHTML())}
+                                            className="rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </div>
+                                    <p className="mt-3 text-sm leading-6 text-gray-600">Please provide the description of the product.</p>
+                                </div>
+                                <div className="col-span-full">
+                                    <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
+                                        Wink Reviews
+                                    </label>
+                                    <div className="mt-2">
+                                        <ReactQuill
+                                            theme="snow"
+                                            id="about"
+                                            value={winkReviews}
+                                            // onChange={setProductDescription}
+                                            modules={modules}
+                                            formats={formats}
+                                            placeholder={`Please write wink reviews for ${productName}`}
+                                            onChange={(content, delta, source, editor) => setWinkReviews(editor.getHTML())}
+                                            className="rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
                                     <p className="mt-3 text-sm leading-6 text-gray-600">Please provide the description of the product.</p>

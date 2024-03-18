@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import homeDecorImg from '../../src/Utilities/products_Images/Home&Decor.jpg'
-import clothingImg from '../../src/Utilities/products_Images/clothing.jpg'
+import WomenImg from '../../src/Utilities/products_Images/Women.jpg'
+import clothingImg from '../../src/Utilities/products_Images/Men.jpg'
 import technologyImg from '../../src/Utilities/products_Images/technology.jpg'
 import fashionImg from '../../src/Utilities/products_Images/fashion.jpg'
 import healthImg from '../../src/Utilities/products_Images/health.jpg'
@@ -32,40 +33,40 @@ function Categories() {
     const products = [
         {
             id: 1,
-            name: 'Home & Decor',
-            href: '/homeDecor',
+            name: 'Men',
+            href: '/categories/Men',
             // price: '$48',
-            imageSrc: homeDecorImg,
+            imageSrc: clothingImg,
             imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         },
         {
             id: 2,
-            name: 'Clothing',
-            href: '/clothing',
+            name: 'Women',
+            href: '/categories/Women',
             // price: '$35',
-            imageSrc: clothingImg,
+            imageSrc: WomenImg,
             imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
         },
         {
             id: 3,
-            name: 'Technology',
-            href: '/technology',
+            name: 'Home & Decor',
+            href: '/categories/HomeAndDecor',
             // price: '$89',
-            imageSrc: technologyImg,
+            imageSrc: homeDecorImg,
             imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
         },
         {
             id: 4,
-            name: 'Fashion Accessories',
-            href: '/fashion',
+            name: 'Technology',
+            href: '/categories/Technology',
             // price: '$35',
-            imageSrc: fashionImg,
+            imageSrc: technologyImg,
             imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
         },
         {
             id: 5,
             name: 'Health and Fitness',
-            href: '/health',
+            href: '/categories/HealthAndFitness',
             // price: '$35',
             imageSrc: healthImg,
             imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -74,7 +75,7 @@ function Categories() {
         {
             id: 6,
             name: 'Car Accessories',
-            href: '/automotive',
+            href: '/categories/CarAccessories',
             // price: '$35',
             imageSrc: carImg,
             imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
@@ -83,7 +84,7 @@ function Categories() {
 
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className="sr-only">Products</h2>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
                     {products.map((product) => (

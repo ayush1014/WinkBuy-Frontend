@@ -20,71 +20,65 @@ const TopwearIcon = () => (
 );
 
 
-
 const men = [
-  { name: 'Topwear', description: 'Get a better understanding of your traffic', href: '/men/MenTopwear', icon: TopwearIcon },
-  { name: 'Bottomwear', description: 'Speak directly to your customers', href: '/men/MenBottomwear', icon: ShoppingCartIcon },
-  { name: 'Footwear', description: 'Speak directly to your customers', href: '/men/MenFootwear', icon: SparklesIcon },
-  { name: 'Sports & Fitness Wear', description: 'Your customers’ data will be safe and secure', href: '/men/MenSportsAndFitnessWear', icon: ComputerDesktopIcon },
-  { name: 'Fashion Accessories', description: 'Connect with third-party tools', href: '/men/MenFashionAccessories', icon: HeartIcon },
-  { name: 'Gifts', description: 'Build strategic funnels that will convert', href: '/men/MenGifts', icon: TruckIcon },
-  { name: 'Gadgets', description: 'Build strategic funnels that will convert', href: '/men/MenGadgets', icon: TruckIcon },
-  { name: 'Bags & Backpacks', description: 'Build strategic funnels that will convert', href: '/men/MenBagsAndBackpacks', icon: TruckIcon },
+  { name: 'Topwear', description: 'Amazing men Tees, Jackets, Shirts & more', href: '/MenTopwear', icon: TopwearIcon },
+  { name: 'Bottomwear', description: 'Men Jeans, Trousers, Shorts & more', href: '/MenBottomwear', icon: ShoppingCartIcon },
+  { name: 'Footwear', description: 'Sneakers, Casual shoes, Sports shoes, Flip Flops & more', href: '/MenFootwear', icon: SparklesIcon },
+  { name: 'Sports & Fitness Wear', description: 'Sports shoes, Active T-shirts, Tracksuits, Jackets and Sweatshirts & more', href: '/MenSportsAndFitnessWear', icon: ComputerDesktopIcon },
+  { name: 'Fashion Accessories', description: 'Wallets, Belts, Fragrances, Body Mists, Jewellery, Caps, Hats & more', href: '/MenFashionAccessories', icon: HeartIcon },
+  { name: 'Gifts', description: 'Cologne, Jewellry, Belts, Clothings, Wallets & more', href: '/MenGifts', icon: TruckIcon },
+  { name: 'Gadgets', description: 'Smartwatches, Phone Cases, Fitness bands, Watches, Watch Bands & more', href: '/MenGadgets', icon: TruckIcon },
+  { name: 'Bags & Backpacks', description: 'Bagpacks, Office Bags, Laptop bags, Travelling bags & more', href: '/MenBagsAndBackpacks', icon: TruckIcon },
 ]
 const women = [
-  { name: 'Dresses', description: 'Get a better understanding of your traffic', href: '/women/Dresses', icon: HomeModernIcon },
-  { name: 'Tops, Tees & Shirts', description: 'Speak directly to your customers', href: '/women/TopsTeesAndShirts', icon: ShoppingCartIcon },
-  { name: 'Bottomwear', description: 'Speak directly to your customers', href: '/women/WomenBottomwear', icon: SparklesIcon },
-  { name: 'Hoodies & Outerwears', description: 'Speak directly to your customers', href: '/women/WomenHoodiesAndOuterwears', icon: SparklesIcon },
-  { name: 'Footwear', description: 'Speak directly to your customers', href: '/women/WomenFootwear', icon: SparklesIcon },
-  { name: 'Gifts', description: 'Build strategic funnels that will convert', href: '/women/WomenGifts', icon: TruckIcon },
-  { name: 'Sports & Fitness Wear', description: 'Your customers’ data will be safe and secure', href: '/women/WomenSportsAndFitnessWear', icon: ComputerDesktopIcon },
-  { name: 'Beauty & Personal Care', description: 'Connect with third-party tools', href: '/women/BeautyAndPersonalCare', icon: HeartIcon },
-  { name: 'Fashion Accessories', description: 'Build strategic funnels that will convert', href: '/women/WomenFashionAccessories', icon: TruckIcon },
-  { name: 'Bags, Purses & Handbags', description: 'Build strategic funnels that will convert', href: '/women/BagsPursesAndHandbags', icon: TruckIcon },
+  { name: 'Dresses', description: 'Birthday Dresses, Casual Dresses, Prom Dresses, Formal Dresses & more', href: '/Dresses', icon: HomeModernIcon },
+  { name: 'Tops, Tees & Shirts', description: 'Tops, Tees, Blouses, Cardigans, Pullovers, Crop tops & more', href: '/TopsTeesAndShirts', icon: ShoppingCartIcon },
+  { name: 'Bottomwear', description: 'Jeans, Pants, Shorts, Skrits & more', href: '/WomenBottomwear', icon: SparklesIcon },
+  { name: 'Hoodies & Outerwears', description: 'Hoddies, Jackets, Sweaters, Zip ups & more', href: '/WomenHoodiesAndOuterwears', icon: SparklesIcon },
+  { name: 'Footwear', description: 'Heels, Sandals, Flats, Shoes, Boots, Sneakers & more', href: '/WomenFootwear', icon: SparklesIcon },
+  { name: 'Gifts', description: 'Perfumes, Body Mists, Rings, Necklaces, Bracelets, Candels, Gift Hampers & more', href: '/WomenGifts', icon: TruckIcon },
+  { name: 'Sports & Fitness Wear', description: 'Sport Shoes, Sports Clothing, Sports Accessories & more', href: '/WomenSportsAndFitnessWear', icon: ComputerDesktopIcon },
+  { name: 'Beauty & Personal Care', description: 'Skincare, Bodycare, Haircae, Makeups & more', href: '/BeautyAndPersonalCare', icon: HeartIcon },
+  { name: 'Fashion Accessories', description: 'Necklace, Bracelets, Ankelets, Ear Rings & more', href: '/WomenFashionAccessories', icon: TruckIcon },
+  { name: 'Bags, Purses & Handbags', description: 'Handbags, Totebags, Sidebags, Wallets, Purses & more', href: '/BagsPursesAndHandbags', icon: TruckIcon },
 ]
 const homeanddecor = [
-  { name: 'Furniture', description: 'Get a better understanding of your traffic', href: '/homeDecor/Furniture', icon: HomeModernIcon },
-  { name: 'Photo Frames', description: 'Speak directly to your customers', href: '/homeDecor/PhotoFrames', icon: ShoppingCartIcon },
-  { name: 'Living Room', description: 'Speak directly to your customers', href: '/homeDecor/LivingRoom', icon: ShoppingCartIcon },
-  { name: 'Bedroom', description: 'Speak directly to your customers', href: '/homeDecor/Bathroom', icon: ShoppingCartIcon },
-  { name: 'Bathroom', description: 'Speak directly to your customers', href: '/homeDecor/Bedroom', icon: SparklesIcon },
-  { name: 'Kitchen', description: 'Your customers’ data will be safe and secure', href: '/homeDecor/Kitchen', icon: ComputerDesktopIcon },
-  { name: 'Lights', description: 'Connect with third-party tools', href: '/homeDecor/Lights', icon: HeartIcon },
-  { name: 'Plants', description: 'Build strategic funnels that will convert', href: '/homeDecor/Plants', icon: TruckIcon },
-  { name: 'Decorations', description: 'Build strategic funnels that will convert', href: '/homeDecor/Decorations', icon: TruckIcon },
-  { name: 'Gifts', description: 'Build strategic funnels that will convert', href: '/homeDecor/HomeDecorGifts', icon: TruckIcon }
+  { name: 'Furniture', description: 'Tables, Chairs, Love Seats, Recliners & many more', href: '/Furniture', icon: HomeModernIcon },
+  { name: 'Photo Frames', description: 'Frames, Polaroid frames, Couple photo frames & more', href: '/PhotoFrames', icon: ShoppingCartIcon },
+  { name: 'Living Room', description: 'Sofas, Recliners, Coffee Tables, TV Units, Lamps, Lights & more decorations', href: '/LivingRoom', icon: ShoppingCartIcon },
+  { name: 'Bedroom', description: 'Bed Frames, Mattresses, Side tables, Night Lamps, Lamps, Lights & more decorations', href: '/Bathroom', icon: ShoppingCartIcon },
+  { name: 'Bathroom', description: 'Bathtub Accessories, Mats, Soap Dispensers, Rugs, Towel Stands & more decorations', href: '/Bedroom', icon: SparklesIcon },
+  { name: 'Kitchen', description: 'Towel Holders, Dispensers, Mats, Racks, Coasters & more', href: '/Kitchen', icon: ComputerDesktopIcon },
+  { name: 'Lights', description: 'Led lights, Neon lights, Artistic Lamps, Smart Bulbs & more', href: '/Lights', icon: HeartIcon },
+  { name: 'Plants', description: 'Indoor Plants, Plant seed, Pet friendly plants, Succulent Plants & more', href: '/Plants', icon: TruckIcon },
+  { name: 'Decorations', description: 'Party Decor, Artifical plats, Indoor String Lights, Birthday Decor, Artistic Paintings, Show Peices & more', href: '/Decorations', icon: TruckIcon },
+  { name: 'Gifts', description: 'Showpiece, Paintings, Coffee Mugs, Diffusers & more', href: '/HomeDecorGifts', icon: TruckIcon }
 ]
 const tech = [
-  { name: 'Phones', description: 'Get a better understanding of your traffic', href: '/technology/Phones', icon: HomeModernIcon },
-  { name: 'Tablets', description: 'Speak directly to your customers', href: '/technology/Tablets', icon: ShoppingCartIcon },
-  { name: 'Smart Devices', description: 'Speak directly to your customers', href: '/technology/SmartDevices', icon: SparklesIcon },
-  { name: 'Laptop & Tablet Accessories', description: 'Your customers’ data will be safe and secure', href: '/technology/LaptopAndTabletAccessories', icon: ComputerDesktopIcon },
-  { name: 'Phone Accessories', description: 'Connect with third-party tools', href: '/technology/PhoneAccessories', icon: HeartIcon },
-  { name: 'Laptops', description: 'Build strategic funnels that will convert', href: '/technology/Laptops', icon: TruckIcon },
-  { name: 'Television', description: 'Build strategic funnels that will convert', href: '/technology/Televisions', icon: TruckIcon },
-  { name: 'Monitors', description: 'Build strategic funnels that will convert', href: '/technology/Monitors', icon: TruckIcon },
-  { name: 'Gaming', description: 'Build strategic funnels that will convert', href: '/technology/Gaming', icon: TruckIcon },
-  { name: 'Softwares', description: 'Build strategic funnels that will convert', href: '/technology/Softwares', icon: TruckIcon },
+  { name: 'Phones', description: 'Iphone, Samsung, Nothing, Motorola, Asus & more', href: '/Phones', icon: HomeModernIcon },
+  { name: 'Tablets', description: 'Ipads, Galaxy Tabs, Asus & more', href: '/Tablets', icon: ShoppingCartIcon },
+  { name: 'Smart Devices', description: 'Alexa, Home Pod, Vivint, Ecobee & more', href: '/SmartDevices', icon: SparklesIcon },
+  { name: 'Laptop & Tablet Accessories', description: 'Laptop Covers, Tablet Cases, Covers, Stickers, Stylus, Apple Pencil & more', href: '/LaptopAndTabletAccessories', icon: ComputerDesktopIcon },
+  { name: 'Phone Accessories', description: 'Phone Cases, Wireless Chargers, Adapters, Holders & more', href: '/PhoneAccessories', icon: HeartIcon },
+  { name: 'Laptops', description: 'MacBook, Alienware, Samsung, Chromebooks & more', href: '/Laptops', icon: TruckIcon },
+  { name: 'Television', description: 'Samsung, LG, Sony, Hisense, Fire TV & more', href: '/Televisions', icon: TruckIcon },
+  { name: 'Monitors', description: 'Curved screens monitors, Portable Monitors, Touch Screens & more', href: '/Monitors', icon: TruckIcon },
+  { name: 'Gaming', description: 'Playstation 5, XBox, Nintendo & more', href: '/Gaming', icon: TruckIcon },
+  { name: 'Softwares', description: 'VPN Services, Antiviruses, Hosting Platforms, MS Office & more', href: '/Softwares', icon: TruckIcon },
 ]
 const healthandfitness = [
-  { name: 'Scales & Measure', description: 'Get a better understanding of your traffic', href: '/health/ScalesAndMeasure', icon: HomeModernIcon },
-  { name: 'Nutrition', description: 'Speak directly to your customers', href: '/health/Nutrition', icon: ShoppingCartIcon },
-  { name: 'Workout Equiments', description: 'Speak directly to your customers', href: '/health/WorkoutEquiments', icon: SparklesIcon },
-  { name: 'Fitness Gadgets', description: 'Your customers’ data will be safe and secure', href: '/health/FitnessGadgets', icon: ComputerDesktopIcon },
-  { name: 'Supplements', description: 'Connect with third-party tools', href: '/health/Supplements', icon: HeartIcon },
-  { name: 'Books', description: 'Build strategic funnels that will convert', href: '/health/Books', icon: TruckIcon },
-  { name: 'Fitness Courses', description: 'Build strategic funnels that will convert', href: '/health/FitnessCourses', icon: TruckIcon },
-  { name: 'Gym Needs', description: 'Build strategic funnels that will convert', href: '/health/GymNeeds', icon: TruckIcon },
+  { name: 'Scales & Measure', description: 'Smart Scales, BMR Scales, Food Scales, Tape Measures & more', href: '/ScalesAndMeasure', icon: HomeModernIcon },
+  { name: 'Nutrition, Supplements & Shakers', description: 'Protien Powders, Multi Vitamins, Creatine, Pre Workouts, Shaker bottles & more', href: '/Nutrition', icon: ShoppingCartIcon },
+  { name: 'Workout Equiments', description: 'Treadmills, Dumbbells, Barbell Pads, Resistance Bands & more', href: '/WorkoutEquiments', icon: SparklesIcon },
+  { name: 'Fitness Gadgets', description: 'Fitness Bands, Massage Guns, Fitness Tracker & more', href: '/FitnessGadgets', icon: ComputerDesktopIcon },
+  { name: 'Books, Fitness Courses & Live Coaches', description: 'Amazing fitness books, Lessons, Fitness Courses & many more', href: '/Books', icon: TruckIcon },
 ]
 const carAccessories = [
-  { name: 'Cleaning', description: 'Get a better understanding of your traffic', href: '/carAccessories/Cleaning', icon: HomeModernIcon },
-  { name: 'Fragrance', description: 'Speak directly to your customers', href: '/carAccessories/Fragrance', icon: ShoppingCartIcon },
-  { name: 'Dash Cams', description: 'Speak directly to your customers', href: '/carAccessories/DashCams', icon: SparklesIcon },
-  { name: 'Phone Holders', description: 'Your customers’ data will be safe and secure', href: '/carAccessories/PhoneHolders', icon: ComputerDesktopIcon },
-  { name: 'Storage', description: 'Connect with third-party tools', href: '/carAccessories/Storage', icon: HeartIcon },
-  { name: 'Charging', description: 'Build strategic funnels that will convert', href: '/carAccessories/PhoneCharging', icon: TruckIcon },
-  { name: 'Car Needs', description: 'Build strategic funnels that will convert', href: '/carAccessories/CarNeeds', icon: TruckIcon },
+  { name: 'Cleaning', description: 'Mircrofiber Rugs, Car Vaccums, Vent Cleaning Slimes, Car Polish & more', href: '/Cleaning', icon: HomeModernIcon },
+  { name: 'Fragrance', description: 'Little trees, Febreze care, Yankee Candels & more', href: '/Fragrance', icon: ShoppingCartIcon },
+  { name: 'Dash Cams', description: 'Live dash cams with night visions, wifi & more', href: '/DashCams', icon: SparklesIcon },
+  { name: 'Phone Holders', description: 'Magnetic phone holders, Window attachments, holders with chargers & more ', href: '/PhoneHolders', icon: ComputerDesktopIcon },
+  { name: 'Car Needs', description: 'More car needs as Storage bins, Smart Chargings & many more', href: '/CarNeeds', icon: TruckIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -97,22 +91,25 @@ function classNames(...classes) {
 
 const NavigationLink = ({ name, activeIndex, onHover, onClick }) => {
   const navigate = useNavigate();
-  const handleWinkBlogs = ()=>{
+  const handleWinkBlogs = () => {
+    console.log("Navigateing to: blogs")
     navigate('/blogs')
   }
   return (
-    <button
-      onMouseEnter={() => onHover(name)}
-      onMouseLeave={() => onHover(null)}
-      onClick={handleWinkBlogs}
-      className="relative text-sm font-semibold leading-6 text-gray-900 group"
-    >
-      {name}
-      <span
-        className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transition-transform duration-200 ${activeIndex === name ? 'scale-x-100' : 'scale-x-0'}`}
-        aria-hidden="true"
-      />
-    </button>
+    <a href={`/blogs`}>
+      <button
+        onMouseEnter={() => onHover(name)}
+        onMouseLeave={() => onHover(null)}
+        onClick={handleWinkBlogs}
+        className="relative text-sm font-semibold leading-6 text-gray-900 group"
+      >
+        {name}
+        <span
+          className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transition-transform duration-200 ${activeIndex === name ? 'scale-x-100' : 'scale-x-0'}`}
+          aria-hidden="true"
+        />
+      </button>
+    </a>
   );
 };
 
@@ -120,6 +117,7 @@ export default function NavbarUser() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(null);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1124);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -142,10 +140,25 @@ export default function NavbarUser() {
     navigate('/login')
   }
 
-  const handleWinkBlogs = ()=>{
+  const handleWinkBlogs = () => {
     navigate('/blogs')
   }
-  
+
+  useEffect(() => {
+    const user = sessionStorage.getItem('User'); // Assuming 'user' is the key where user info is stored
+    setIsUserLoggedIn(!!user); // If user info exists, set the login status to true
+  }, []);
+
+  const handleSignOut = () => {
+    // Clear the user session data
+    sessionStorage.removeItem('User');
+    // Update the login status
+    setIsUserLoggedIn(false);
+    // Navigate to the homepage or login page as needed
+    window.location.reload();
+    navigate('/');
+  };
+
   return (
     <div>
 
@@ -171,7 +184,7 @@ export default function NavbarUser() {
               </div>
 
               <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} onClick={handleWinkBlogs}/>
+                <NavigationLink name="Wink Blogs" activeIndex={activeIndex} onHover={handlePopoverToggle} onClick={() => handleWinkBlogs} />
                 <Popover className="relative">
                   <Popover.Button
                     onMouseEnter={() => handlePopoverToggle('men')} // 'men' is a unique identifier for the Men button
@@ -199,9 +212,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {men.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 {React.createElement(item.icon, { className: "h-6 w-6 text-gray-600 group-hover:text-indigo-600", "aria-hidden": "true" })}
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -253,9 +266,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {women.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -307,9 +320,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {homeanddecor.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -361,9 +374,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {tech.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -416,9 +429,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {healthandfitness.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -470,9 +483,9 @@ export default function NavbarUser() {
                         <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                           {carAccessories.map((item, index) => (
                             <div key={index} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                              <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              {/* <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                              </div>
+                              </div> */}
                               <div>
                                 <a href={item.href} className="font-semibold text-gray-900">
                                   {item.name}
@@ -501,9 +514,17 @@ export default function NavbarUser() {
           </a> */}
               </Popover.Group>
               <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                <button href="#" className="text-sm font-semibold leading-6 text-gray-900" onClick={handleLogin}>
-                  Log in <span aria-hidden="true">&rarr;</span>
-                </button>
+                {
+                  isUserLoggedIn ? (
+                    <button className="text-sm font-semibold leading-6 text-gray-900" onClick={handleSignOut}>
+                      Sign out <span aria-hidden="true">&rarr;</span>
+                    </button>
+                  ) : (
+                    <button className="text-sm font-semibold leading-6 text-gray-900" onClick={handleLogin}>
+                      Log in <span aria-hidden="true">&rarr;</span>
+                    </button>
+                  )
+                }
               </div>
             </nav>
           </header>

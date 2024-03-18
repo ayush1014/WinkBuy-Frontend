@@ -80,7 +80,14 @@ export default function ProductDetail() {
                                     margin: 'auto'
                                 }}
                             />
+
                         </div>
+                            <div className="mt-6">
+                                {/* <p className="text-base text-gray-900">{product.product_Description}</p> */}
+                                <hr></hr>
+                                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product Description</h2>
+                                <div className="text-base text-gray-900" dangerouslySetInnerHTML={{ __html: product.product_Description }} />
+                            </div>
                     </div>
 
                     {/* Product info and Description */}
@@ -110,7 +117,9 @@ export default function ProductDetail() {
                         </div>
                         {/* Description */}
                         <div className="mt-6">
-                            <p className="text-base text-gray-900">{product.product_Description}</p>
+                            {/* <p className="text-base text-gray-900">{product.product_Description}</p> */}
+                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Wink Reviews</h2>
+                            <div className="text-base text-gray-900" dangerouslySetInnerHTML={{ __html: product.winkReviews }} />
                         </div>
                     </div>
                 </div>

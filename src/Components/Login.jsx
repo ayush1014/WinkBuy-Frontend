@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Footer from "./Footer";
 import api from "../Config/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [errorMessage, setErrorMessage] = useState('');
 
+    const navigate = useNavigate();
     async function handleLogin(e) {
         e.preventDefault();
         setErrorMessage('');
@@ -19,6 +21,7 @@ export default function Login() {
             const response = await api.post('/login', loginInfo);
             sessionStorage.setItem('User', JSON.stringify(response.data));
             console.log('login successful', response.data);
+            navigate('/')
             // ... handle successful login (e.g., redirect to admin dashboard)
         } catch (error) {
             const message = error.response?.data || error.message;
