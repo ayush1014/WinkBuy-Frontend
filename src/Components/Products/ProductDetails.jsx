@@ -37,7 +37,7 @@ export default function ProductDetail() {
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-    if (!product) return <div>Product not found</div>;
+    // if (!product) return <div>Product not found</div>;
 
     const renderStars = (rating) => {
         let stars = [];
