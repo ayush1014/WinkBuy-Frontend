@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import NavbarUser from "../NavbarUser";
 import api from '../../Config/axios'; // Make sure to use the correct path to your axios instance
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import './ImageContainer.css'
 
 const typeName = {
-  Men: [
+  men: [
     { name: 'MenTopwear', show: 'Topwear', link: 'MenTopwear' },
     { name: 'MenBottomwear', show: 'Bottom Wear', link: 'MenBottomwear' },
     { name: 'MenFootwear', show: 'Footwear', link: 'MenFootwear' },
@@ -15,7 +15,7 @@ const typeName = {
     { name: 'MenGadgets', show: 'Gadgets', link: 'MenGadgets' },
     { name: 'MenBagsAndBackpacks', show: 'Bags & Backpacks', link: 'MenBagsAndBackpacks' },
   ],
-  Women: [
+  women: [
     { name: 'Dresses', show: 'Dressess', link: 'Dresses' },
     { name: 'TopsTeesAndShirts', show: 'Tops, Tees & Shirts', link: 'TopsTeesAndShirts' },
     { name: 'WomenBottomwear', show: 'Bottomwear', link: 'WomenBottomwear' },
@@ -39,7 +39,7 @@ const typeName = {
     { name: 'Decorations', show: 'Decorations', link: 'Decorations' },
     { name: 'HomeDecorGifts', show: 'Home Decor Gifts', link: 'HomeDecorGifts' },
   ],
-  Technology: [
+  technology: [
     { name: 'Phones', show: 'Phones', link: 'Phones' },
     { name: 'Tablets', show: 'Tablets', link: 'Tablets' },
     { name: 'SmartDevices', show: 'Smart Devices', link: 'SmartDevices' },
@@ -77,8 +77,6 @@ export default function TypeCategories() {
       .then((response) => {
         const updatedCats = response.data.map(category => {
           const match = typeName[type]?.find(t => t.name === category.category_name);
-          // Include both 'show' for display and 'link' for the href in the mapped object
-          // We now also keep the 'type' to be used in the URL
           return match ? { ...category, show: match.show, link: match.link } : { ...category, show: category.category_name, link: category.category_name };
         });
         setUpdatedCategories(updatedCats);
@@ -96,7 +94,7 @@ export default function TypeCategories() {
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{type} Categories</h2>
           <div className="py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {updatedCategories.map((category, index) => (
-              <a key={index} href={`/${type}/${category.link}`} className="group">
+              <Link key={index} to={`/${type}/${category.link}`} className="group"> {/* Use Link component for SPA behavior */}
                 <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
                     src={category.category_pic || 'https://via.placeholder.com/150'}
@@ -105,7 +103,7 @@ export default function TypeCategories() {
                   />
                 </div>
                 <h3 className="mt-4 text-xl text-gray-700">{category.show}</h3>
-              </a>
+              </Link> // Changed from <a> to <Link>
             ))}
           </div>
         </div>
