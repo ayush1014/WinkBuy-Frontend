@@ -2,6 +2,7 @@ import { useState } from "react";
 import Footer from "./Footer";
 import api from "../Config/axios";
 import { useNavigate } from "react-router-dom";
+import logo from "../Utilities/products_Images/Wink Buy.gif"
 
 export default function Login() {
     const [username, setUsername] = useState();
@@ -37,8 +38,8 @@ export default function Login() {
                     <div className="mx-auto w-full max-w-sm lg:w-96">
                         <div>
                             <img
-                                className="h-10 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                className="h-20 w-auto"
+                                src={logo}
                                 alt="Your Company"
                             />
                             <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
