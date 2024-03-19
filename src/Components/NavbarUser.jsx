@@ -143,7 +143,7 @@ export default function NavbarUser() {
 
   const handleWinkBlogs = () => {
     navigate('/blogs')
-    setMobileMenuOpen(false); 
+    setMobileMenuOpen(false);
   }
 
   useEffect(() => {
@@ -164,21 +164,25 @@ export default function NavbarUser() {
   const handleWishlist = () => {
     if (!isUserLoggedIn) {
       navigate('/login')
-      setMobileMenuOpen(false); 
+      setMobileMenuOpen(false);
     }
     else {
       navigate('/wishlist')
-      setMobileMenuOpen(false); 
+      setMobileMenuOpen(false);
     }
   }
 
   const handleNavigate = (path) => {
     navigate(`/${path}`);
+    window.location.reload()
+    setActiveIndex(null); 
   };
 
   const handleMobileNavigate = (path) => {
     navigate(`/${path}`);
-    setMobileMenuOpen(false); 
+    window.location.reload()
+    setMobileMenuOpen(false);
+    setActiveIndex(null);
   };
 
   return (
