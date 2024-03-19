@@ -14,6 +14,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { BounceLoader } from 'react-spinners';
 
 function RecentDrops() {
     const [homeDecor, setHomeDecor] = useState(false)
@@ -27,14 +28,17 @@ function RecentDrops() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [addedToWishlist, setAddedToWishlist] = useState(new Set());
     const [showPopup, setShowPopup] = useState({ show: false, message: '' });
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         async function fetchProducts() {
             try {
+                setIsLoading(true);
                 const response = await api.get('/products');
                 const data = response.data
                 console.log(data)
                 setProductDrop(data.slice(0, 6));
+                setIsLoading(false);
             } catch (error) {
                 console.log('error getting products', error);
             }
@@ -219,6 +223,11 @@ function RecentDrops() {
 
     return (
         <div className="bg-white">
+           {isLoading ? (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            ) : (
             <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-10">
                 {showPopup.show && (
                     <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
@@ -268,7 +277,7 @@ function RecentDrops() {
                         </a>
                     ))}
                 </Carousel>
-            </div>
+            </div>)}
         </div>
     );
 }

@@ -5,6 +5,7 @@ import api from '../../Config/axios';
 import './ImageContainer.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { BounceLoader } from 'react-spinners';
 
 const typeName = {
   CarAccessories: [
@@ -27,6 +28,7 @@ export default function CarAccessories() {
   const [addedToWishlist, setAddedToWishlist] = useState(new Set());
   const [catname, setCatname] = useState('');
   const [showPopup, setShowPopup] = useState({ show: false, message: '' });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const userSession = sessionStorage.getItem('User');
@@ -51,9 +53,11 @@ export default function CarAccessories() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setIsLoading(true);
         const response = await api.get(`/products/category/${type}`);
         setProducts(response.data);
         setRecent(response.data.slice(0, 10));
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching products: ', error);
       }
@@ -113,11 +117,15 @@ export default function CarAccessories() {
 
 
 
-
   return (
     <div>
       <NavbarUser />
-      <div className="bg-white">
+
+      {isLoading ? (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            ) : (<div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-1 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Recent Drops</h2>
 
@@ -209,7 +217,7 @@ export default function CarAccessories() {
             ))}
           </div>
         </div>
-      </div>
+      </div>)}
       <Footer />
     </div>
   );

@@ -3,6 +3,7 @@ import NavbarUser from "../NavbarUser";
 import api from '../../Config/axios'; // Make sure to use the correct path to your axios instance
 import { useParams, Link } from 'react-router-dom';
 import './ImageContainer.css'
+import { BounceLoader } from 'react-spinners';
 
 const typeName = {
   men: [
@@ -70,9 +71,11 @@ const typeName = {
 
 export default function TypeCategories() {
   const [updatedCategories, setUpdatedCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { type } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     api.get(`/main-category/${type}/categories`)
       .then((response) => {
         const updatedCats = response.data.map(category => {
@@ -80,6 +83,7 @@ export default function TypeCategories() {
           return match ? { ...category, show: match.show, link: match.link } : { ...category, show: category.category_name, link: category.category_name };
         });
         setUpdatedCategories(updatedCats);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching categories:', error);
@@ -90,6 +94,11 @@ export default function TypeCategories() {
     <>
       <NavbarUser />
       <div className="bg-white">
+      {isLoading ? (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            ) : ( 
         <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{type} Categories</h2>
           <div className="py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -106,7 +115,7 @@ export default function TypeCategories() {
               </Link> // Changed from <a> to <Link>
             ))}
           </div>
-        </div>
+        </div>)}
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import api from '../../Config/axios';
 import { CheckCircleIcon, InformationCircleIcon } from '@heroicons/react/20/solid'
 import './BlogsDetails.css'
+import { BounceLoader } from 'react-spinners';
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
@@ -22,6 +23,7 @@ function classNames(...classes) {
 
 export default function BlogsDetails() {
     const [blogs, setBlogs] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const { blogname } = useParams();
 
     useEffect(() => {
@@ -30,11 +32,12 @@ export default function BlogsDetails() {
                 const urlEncodedString = blogname;
                 const decodedString = decodeURIComponent(urlEncodedString);
                 console.log('decodedString:', decodedString);
-
+                setIsLoading(true);
                 const response = await api.get(`/blogs/${decodedString}`);
                 const data = response.data;
                 console.log(data);
                 setBlogs(data); // Set the array of blogs returned from the API
+                setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching blog details:', error);
             }
@@ -55,6 +58,11 @@ export default function BlogsDetails() {
     return (
         <>
             <NavbarUser />
+            {isLoading ? (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            ) : ( 
             <div className='flex justify-center bg-white'>
                 <div className="sticky-sidebar mt-52 w-40 hidden lg:block">
                     <nav className="Sidebar flex flex-1 flex-col" aria-label="Sidebar">
@@ -167,7 +175,7 @@ export default function BlogsDetails() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div>)}
             <Footer />
         </>
     );

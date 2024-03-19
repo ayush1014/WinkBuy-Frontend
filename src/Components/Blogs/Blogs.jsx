@@ -3,6 +3,7 @@ import api from '../../Config/axios';
 import NavbarUser from '../NavbarUser';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
+import { BounceLoader } from 'react-spinners';
 
 const posts = [
     {
@@ -29,15 +30,17 @@ const posts = [
 
 export default function Blogs() {
     const [posts, setPosts] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         // console.log("Fetching blog posts...");
+        setIsLoading(true);
         api.get('/blogs')
             .then((response) => {
                 // console.log("Blog posts:", response.data);
                 setPosts(response.data);
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error('Error fetching blog posts:', error);
@@ -57,6 +60,11 @@ export default function Blogs() {
                             get some great buying ideas for buying products like smartphones, laptops, tablets, cloths, shoes and more with our expert advice.
                         </p>
                     </div>
+                    {isLoading ? (
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            ) : ( 
                     <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         {posts.map((post) => (
                             <article key={post.blog} className="flex flex-col items-start justify-between">
@@ -110,7 +118,7 @@ export default function Blogs() {
                                 </div>
                             </article>
                         ))}
-                    </div>
+                    </div>)}
                 </div>
             </div>
             <Footer />
