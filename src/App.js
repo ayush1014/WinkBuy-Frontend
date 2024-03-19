@@ -41,10 +41,13 @@ function App() {
           <Route path='/categories/:type' element={<TypeCategories/>}/>
           <Route path='men/:type' element={<MenProducts />} />
           <Route path='women/:type' element={<WomenProducts/>}/>
-          <Route path='homeDecor/:type' element={<HomeDecorProducts/>} />
+          {/* <Route path='homeDecor/:type' element={<HomeDecorProducts/>} /> */}
+          <Route path='HomeAndDecor/:type' element={<HomeDecorProducts/>} />
           <Route path='technology/:type' element={<Technology/>}/>
-          <Route path='health/:type' element={<Health />} />
-          <Route path='car/:type' element={<CarAccessories/>} />
+          {/* <Route path='health/:type' element={<Health />} /> */}
+          <Route path='HealthAndFitness/:type' element={<Health />} />
+          {/* <Route path='car/:type' element={<CarAccessories/>} /> */}
+          <Route path='CarAccessories/:type' element={<CarAccessories/>} />
           <Route path='/productDetail/:product_id' element={<ProductDetail/>}/>
           <Route path='/blogs' element={<Blogs/>}/>
           <Route path='/blog/:blogname' element={<BlogsDetails/>}/>

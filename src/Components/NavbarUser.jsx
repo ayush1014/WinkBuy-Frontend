@@ -44,16 +44,16 @@ const women = [
   { name: 'Bags, Purses & Handbags', description: 'Handbags, Totebags, Sidebags, Wallets, Purses & more', href: 'women/BagsPursesAndHandbags', icon: TruckIcon },
 ]
 const homeanddecor = [
-  { name: 'Furniture', description: 'Tables, Chairs, Love Seats, Recliners & many more', href: 'homeDecor/Furniture', icon: HomeModernIcon },
-  { name: 'Photo Frames', description: 'Frames, Polaroid frames, Couple photo frames & more', href: 'homeDecor/PhotoFrames', icon: ShoppingCartIcon },
-  { name: 'Living Room', description: 'Sofas, Recliners, Coffee Tables, TV Units, Lamps, Lights & more decorations', href: 'homeDecor/LivingRoom', icon: ShoppingCartIcon },
-  { name: 'Bedroom', description: 'Bed Frames, Mattresses, Side tables, Night Lamps, Lamps, Lights & more decorations', href: 'homeDecor/Bathroom', icon: ShoppingCartIcon },
-  { name: 'Bathroom', description: 'Bathtub Accessories, Mats, Soap Dispensers, Rugs, Towel Stands & more decorations', href: 'homeDecor/Bedroom', icon: SparklesIcon },
-  { name: 'Kitchen', description: 'Towel Holders, Dispensers, Mats, Racks, Coasters & more', href: 'homeDecor/Kitchen', icon: ComputerDesktopIcon },
-  { name: 'Lights', description: 'Led lights, Neon lights, Artistic Lamps, Smart Bulbs & more', href: 'homeDecor/Lights', icon: HeartIcon },
-  { name: 'Plants', description: 'Indoor Plants, Plant seed, Pet friendly plants, Succulent Plants & more', href: 'homeDecor/Plants', icon: TruckIcon },
-  { name: 'Decorations', description: 'Party Decor, Artifical plats, Indoor String Lights, Birthday Decor, Artistic Paintings, Show Peices & more', href: 'homeDecor/Decorations', icon: TruckIcon },
-  { name: 'Home Decor Gifts', description: 'Showpiece, Paintings, Coffee Mugs, Diffusers & more', href: 'homeDecor/HomeDecorGifts', icon: TruckIcon }
+  { name: 'Furniture', description: 'Tables, Chairs, Love Seats, Recliners & many more', href: 'HomeAndDecor/Furniture', icon: HomeModernIcon },
+  { name: 'Photo Frames', description: 'Frames, Polaroid frames, Couple photo frames & more', href: 'HomeAndDecor/PhotoFrames', icon: ShoppingCartIcon },
+  { name: 'Living Room', description: 'Sofas, Recliners, Coffee Tables, TV Units, Lamps, Lights & more decorations', href: 'HomeAndDecor/LivingRoom', icon: ShoppingCartIcon },
+  { name: 'Bedroom', description: 'Bed Frames, Mattresses, Side tables, Night Lamps, Lamps, Lights & more decorations', href: 'HomeAndDecor/Bathroom', icon: ShoppingCartIcon },
+  { name: 'Bathroom', description: 'Bathtub Accessories, Mats, Soap Dispensers, Rugs, Towel Stands & more decorations', href: 'HomeAndDecor/Bedroom', icon: SparklesIcon },
+  { name: 'Kitchen', description: 'Towel Holders, Dispensers, Mats, Racks, Coasters & more', href: 'HomeAndDecor/Kitchen', icon: ComputerDesktopIcon },
+  { name: 'Lights', description: 'Led lights, Neon lights, Artistic Lamps, Smart Bulbs & more', href: 'HomeAndDecor/Lights', icon: HeartIcon },
+  { name: 'Plants', description: 'Indoor Plants, Plant seed, Pet friendly plants, Succulent Plants & more', href: 'HomeAndDecor/Plants', icon: TruckIcon },
+  { name: 'Decorations', description: 'Party Decor, Artifical plats, Indoor String Lights, Birthday Decor, Artistic Paintings, Show Peices & more', href: 'HomeAndDecor/Decorations', icon: TruckIcon },
+  { name: 'Home Decor Gifts', description: 'Showpiece, Paintings, Coffee Mugs, Diffusers & more', href: 'HomeAndDecor/HomeDecorGifts', icon: TruckIcon }
 ]
 const tech = [
   { name: 'Phones', description: 'Iphone, Samsung, Nothing, Motorola, Asus & more', href: 'technology/Phones', icon: HomeModernIcon },
@@ -68,18 +68,18 @@ const tech = [
   { name: 'Softwares', description: 'VPN Services, Antiviruses, Hosting Platforms, MS Office & more', href: 'technology/Softwares', icon: TruckIcon },
 ]
 const healthandfitness = [
-  { name: 'Scales & Measure', description: 'Smart Scales, BMR Scales, Food Scales, Tape Measures & more', href: 'health/ScalesAndMeasure', icon: HomeModernIcon },
-  { name: 'Nutrition, Supplements & Shakers', description: 'Protien Powders, Multi Vitamins, Creatine, Pre Workouts, Shaker bottles & more', href: 'health/Nutrition', icon: ShoppingCartIcon },
-  { name: 'Workout Equiments', description: 'Treadmills, Dumbbells, Barbell Pads, Resistance Bands & more', href: 'health/WorkoutEquiments', icon: SparklesIcon },
-  { name: 'Fitness Gadgets', description: 'Fitness Bands, Massage Guns, Fitness Tracker & more', href: 'health/FitnessGadgets', icon: ComputerDesktopIcon },
-  { name: 'Books, Fitness Courses & Live Coaches', description: 'Amazing fitness books, Lessons, Fitness Courses & many more', href: 'health/Books', icon: TruckIcon },
+  { name: 'Scales & Measure', description: 'Smart Scales, BMR Scales, Food Scales, Tape Measures & more', href: 'HealthAndFitness/ScalesAndMeasure', icon: HomeModernIcon },
+  { name: 'Nutrition, Supplements & Shakers', description: 'Protien Powders, Multi Vitamins, Creatine, Pre Workouts, Shaker bottles & more', href: 'HealthAndFitness/Nutrition', icon: ShoppingCartIcon },
+  { name: 'Workout Equiments', description: 'Treadmills, Dumbbells, Barbell Pads, Resistance Bands & more', href: 'HealthAndFitness/WorkoutEquiments', icon: SparklesIcon },
+  { name: 'Fitness Gadgets', description: 'Fitness Bands, Massage Guns, Fitness Tracker & more', href: 'HealthAndFitness/FitnessGadgets', icon: ComputerDesktopIcon },
+  { name: 'Books, Fitness Courses & Live Coaches', description: 'Amazing fitness books, Lessons, Fitness Courses & many more', href: 'HealthAndFitness/Books', icon: TruckIcon },
 ]
 const carAccessories = [
-  { name: 'Cleaning', description: 'Mircrofiber Rugs, Car Vaccums, Vent Cleaning Slimes, Car Polish & more', href: 'car/Cleaning', icon: HomeModernIcon },
-  { name: 'Fragrance', description: 'Little trees, Febreze care, Yankee Candels & more', href: 'car/Fragrance', icon: ShoppingCartIcon },
-  { name: 'Dash Cams', description: 'Live dash cams with night visions, wifi & more', href: 'car/DashCams', icon: SparklesIcon },
-  { name: 'Phone Holders', description: 'Magnetic phone holders, Window attachments, holders with chargers & more ', href: 'car/PhoneHolders', icon: ComputerDesktopIcon },
-  { name: 'Car Needs', description: 'More car needs as Storage bins, Smart Chargings & many more', href: 'car/CarNeeds', icon: TruckIcon },
+  { name: 'Cleaning', description: 'Mircrofiber Rugs, Car Vaccums, Vent Cleaning Slimes, Car Polish & more', href: 'CarAccessories/Cleaning', icon: HomeModernIcon },
+  { name: 'Fragrance', description: 'Little trees, Febreze care, Yankee Candels & more', href: 'CarAccessories/Fragrance', icon: ShoppingCartIcon },
+  { name: 'Dash Cams', description: 'Live dash cams with night visions, wifi & more', href: 'CarAccessories/DashCams', icon: SparklesIcon },
+  { name: 'Phone Holders', description: 'Magnetic phone holders, Window attachments, holders with chargers & more ', href: 'CarAccessories/PhoneHolders', icon: ComputerDesktopIcon },
+  { name: 'Car Needs', description: 'More car needs as Storage bins, Smart Chargings & many more', href: 'CarAccessories/CarNeeds', icon: TruckIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
