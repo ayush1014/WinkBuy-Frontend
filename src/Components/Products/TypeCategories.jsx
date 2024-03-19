@@ -27,7 +27,7 @@ const typeName = {
     { name: 'WomenFashionAccessories', show: 'Fashion Accessories', link: 'BeautyAndPersonalCare' },
     { name: 'BagsPursesAndHandbags', show: 'Purses & Handbags', link: 'BagsPursesAndHandbags' },
   ],
-  HomeAndDecor: [
+  homeDecor: [
     { name: 'Furniture', show: 'Furnitures', link: 'Furniture' },
     { name: 'PhotoFrames', show: 'Photo Frames', link: 'PhotoFrames' },
     { name: 'LivingRoom', show: 'Living Room', link: 'LivingRoom' },
@@ -51,7 +51,7 @@ const typeName = {
     { name: 'Gaming', show: 'Gaming', link: 'Gaming' },
     { name: 'Softwares', show: 'Softwares', link: 'Softwares' },
   ],
-  HealthAndFitness: [
+  health: [
     { name: 'ScalesAndMeasure', show: 'Scales & Measure', link: 'ScalesAndMeasure' },
     { name: 'Nutrition', show: 'Nutrition', link: 'Nutrition' },
     { name: 'WorkoutEquiments', show: 'Workout Equiments', link: 'WorkoutEquiments' },
@@ -59,7 +59,7 @@ const typeName = {
     { name: 'Supplements', show: 'Supplements', link: 'Supplements' },
     { name: 'Books', show: 'Books, Fitness Courses & Live Coaches', link: 'Books' },
   ],
-  CarAccessories: [
+  car: [
     { name: 'Cleaning', show: 'Cleaning', link: 'Cleaning' },
     { name: 'Fragrance', show: 'Fragrance', link: 'Fragrance' },
     { name: 'DashCams', show: 'Dash Cams', link: 'DashCams' },
