@@ -65,12 +65,9 @@ export default function Home() {
         )}
       </div>
 
-      <div>
-        <Advertisements />
-      </div>
       <div className='md:p-2'>
         {adminCheck && (
-          <div className="absolute mt-10 top-22 right-16"> {/* Adjust the positioning as needed */}
+          <div className="absolute mt-10 top-10 right-6 lg:top-14 right-20"> 
             <div className='px-8 flex gap-x-8'>
               <button
                 type="button"
@@ -89,6 +86,11 @@ export default function Home() {
             </div>
           </div>)}
       </div>
+
+      <div>
+        <Advertisements />
+      </div>
+
       <div>
         <RecentDrops />
       </div>

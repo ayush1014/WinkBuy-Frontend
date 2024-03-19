@@ -22,7 +22,7 @@ function Admin() {
             {/* admin */}
             <NavbarUser />
             <div className="absolute top-22 right-16"> {/* Adjust the positioning as needed */}
-                <div className='px-8 flex gap-x-8'>
+                <div className='px-8 flex p-20 gap-x-8'>
                     <button
                         type="button"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
