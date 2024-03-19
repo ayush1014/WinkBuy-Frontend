@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import {useState} from 'react'
 import api from "../Config/axios";
+import logo from "../Utilities/products_Images/Wink Buy.gif"
 
 export default function AdminSignup() {
 
@@ -43,8 +44,8 @@ export default function AdminSignup() {
                     <div className="mx-auto w-full max-w-sm lg:w-96">
                         <div>
                             <img
-                                className="h-10 w-auto"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                className="h-20 w-auto"
+                                src={logo}
                                 alt="Your Company"
                             />
                             <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
