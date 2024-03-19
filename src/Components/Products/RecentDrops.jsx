@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import homeDecorImg from '../../../src/Utilities/products_Images/Home&Decor.jpg'
@@ -29,23 +29,28 @@ function RecentDrops() {
     const [addedToWishlist, setAddedToWishlist] = useState(new Set());
     const [showPopup, setShowPopup] = useState({ show: false, message: '' });
     const [isLoading, setIsLoading] = useState(false);
+    const maxRetries = 20; 
+    const retryDelay = 2000; 
 
-    useEffect(() => {
-        async function fetchProducts() {
-            try {
-                setIsLoading(true);
-                const response = await api.get('/products');
-                const data = response.data
-                console.log(data)
-                setProductDrop(data.slice(0, 6));
-                setIsLoading(false);
-            } catch (error) {
-                console.log('error getting products', error);
+    const fetchProducts = useCallback(async (attempt = 0) => {
+        try {
+            setIsLoading(true);
+            const response = await api.get('/products');
+            setProductDrop(response.data.slice(0, 6));
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            if (attempt < maxRetries) {
+                setTimeout(() => fetchProducts(attempt + 1), retryDelay);
+            } else {
+                setIsLoading(false); // Stop trying after max attempts
             }
         }
+    }, [maxRetries, retryDelay]);
 
-        fetchProducts()
-    }, [])
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
 
     useEffect(() => {
         const userSession = sessionStorage.getItem('User');
@@ -108,42 +113,6 @@ function RecentDrops() {
             setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
         }
     };
-    
-
-
-    // const handleWishlistIconClick = async (event, productId) => {
-    //     event.stopPropagation();
-    //     event.preventDefault();
-
-    //     if (!isUserLoggedIn) {
-    //         navigate('/login');
-    //         return;
-    //     }
-
-    //     const userSession = sessionStorage.getItem('User');
-    //     const user = JSON.parse(userSession);
-
-    //     if (!user || !user.username) {
-    //         console.error('User session not found or invalid');
-    //         return;
-    //     }
-
-    //     try {
-    //         const response = await api.post('/add', {
-    //             userId: user.username,
-    //             productId: productId
-    //         });
-
-    //         if (response.status === 201) {
-    //             console.log('Added to wishlist', response.data);
-    //         } else {
-    //             console.error('Unexpected response adding to wishlist:', response);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error adding to wishlist:', error);
-    //     }
-    // };
-
 
     useEffect(() => {
         const user = sessionStorage.getItem('User');

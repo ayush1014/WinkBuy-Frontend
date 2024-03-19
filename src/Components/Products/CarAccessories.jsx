@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import NavbarUser from '../NavbarUser';
 import Footer from '../Footer';
 import api from '../../Config/axios';
@@ -29,8 +29,11 @@ export default function CarAccessories() {
   const [catname, setCatname] = useState('');
   const [showPopup, setShowPopup] = useState({ show: false, message: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const maxRetries = 20; 
+  const retryDelay = 2000; 
 
-  useEffect(() => {
+
+  const checkUserSession = useCallback(() => {
     const userSession = sessionStorage.getItem('User');
     if (userSession) {
       setIsUserLoggedIn(true);
@@ -48,23 +51,29 @@ export default function CarAccessories() {
     } else {
       setIsUserLoggedIn(false);
     }
-  }, [type]);
+  }, []);
+
+  const fetchProducts = useCallback(async (attempt = 0) => {
+    try {
+      setIsLoading(true);
+      const response = await api.get(`/products/category/${type}`);
+      setProducts(response.data);
+      setRecent(response.data.slice(0, 10));
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching products: ', error);
+      if (attempt < maxRetries) {
+        setTimeout(() => fetchProducts(attempt + 1), retryDelay);
+      } else {
+        setIsLoading(false); 
+      }
+    }
+  }, [type, maxRetries, retryDelay]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const response = await api.get(`/products/category/${type}`);
-        setProducts(response.data);
-        setRecent(response.data.slice(0, 10));
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching products: ', error);
-      }
-    };
-
+    checkUserSession();
     fetchProducts();
-  }, [type]);
+  }, [checkUserSession, fetchProducts]);
 
   useEffect(() => {
     const typeItem = typeName.CarAccessories.find(item => item.name === type);

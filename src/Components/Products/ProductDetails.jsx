@@ -1,10 +1,11 @@
 import { StarIcon } from '@heroicons/react/20/solid';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'; // If you're using react-router for routing
 import NavbarUser from '../NavbarUser';
 import Footer from '../Footer';
 import api from '../../Config/axios';
 import './ImageContainer.css'
+import { BounceLoader } from 'react-spinners';
 
 export default function ProductDetail() {
     const { product_id } = useParams(); // Assuming you're using react-router and the route is /products/:productId
@@ -12,33 +13,29 @@ export default function ProductDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-    useEffect(() => {
-        console.log('entering', product_id)
-        // Fetch product details from the backend
-        const fetchProduct = async () => {
-            console.log(product_id)
-            setIsLoading(true);
-            try {
-                const response = await api.get(`/products/${product_id}`);
-                console.log(response)
-                // if (!response.statusText) {
-                //     console.log('error fetching product');
-                //     throw new Error('Product not found');
-                // }
-                setProduct(response.data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setIsLoading(false);
+    const maxRetries = 20;
+    const retryDelay = 2000;
+
+    const fetchProductWithRetry = useCallback(async (attempt = 0) => {
+        try {
+            const response = await api.get(`/products/${product_id}`);
+            setProduct(response.data);
+            setIsLoading(false); // Stop loading after successful fetch
+            setError(null); // Clear any existing errors
+        } catch (error) {
+            console.error(`Attempt ${attempt + 1}: Error fetching product details`, error);
+            if (attempt < maxRetries - 1) { // Subtract 1 because attempt is zero-based
+                setTimeout(() => fetchProductWithRetry(attempt + 1), retryDelay);
+            } else {
+                setError('Failed to fetch product details. Please try again later.');
+                setIsLoading(false); // Stop loading after all retries have been exhausted
             }
-        };
+        }
+    }, [product_id, maxRetries, retryDelay]);
 
-        fetchProduct();
-    }, [product_id]);
-
-    if (isLoading) return <div>Loading...</div>;
-    // if (error) return <div>Error: {error}</div>;
-    // if (!product) return <div>Product not found</div>;
+    useEffect(() => {
+        fetchProductWithRetry(); // Invoke the fetch operation with retry logic
+    }, [fetchProductWithRetry]);
 
     const renderStars = (rating) => {
         let stars = [];
@@ -56,6 +53,29 @@ export default function ProductDetail() {
 
     const handleAdd = () => {
         window.open(product.product_link, '_blank');
+    }
+
+    if (isLoading) {
+        return (
+            <>
+                <NavbarUser />
+                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+                </div>
+            </>
+        );
+    }
+
+    if (error) {
+        return (
+            <>
+                <NavbarUser />
+                <div className="text-center py-10">
+                    <p className="text-red-500">{error}</p>
+                </div>
+                <Footer />
+            </>
+        );
     }
 
     return (
@@ -83,12 +103,12 @@ export default function ProductDetail() {
                             />
 
                         </div>
-                            <div className="mt-6">
-                                {/* <p className="text-base text-gray-900">{product.product_Description}</p> */}
-                                <hr></hr>
-                                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product Description</h2>
-                                <div className="text-base text-gray-900" dangerouslySetInnerHTML={{ __html: product.product_Description }} />
-                            </div>
+                        <div className="mt-6">
+                            {/* <p className="text-base text-gray-900">{product.product_Description}</p> */}
+                            <hr></hr>
+                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product Description</h2>
+                            <div className="text-base text-gray-900" dangerouslySetInnerHTML={{ __html: product.product_Description }} />
+                        </div>
                     </div>
 
                     {/* Product info and Description */}

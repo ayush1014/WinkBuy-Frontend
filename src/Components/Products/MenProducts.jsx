@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import NavbarUser from '../NavbarUser';
 import Footer from '../Footer';
 import api from '../../Config/axios';
@@ -30,8 +30,11 @@ export default function MenProducts() {
   const [catname, setCatname] = useState('');
   const [showPopup, setShowPopup] = useState({ show: false, message: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const maxRetries = 20; 
+  const retryDelay = 2000; 
 
-  useEffect(() => {
+
+  const checkUserSession = useCallback(() => {
     const userSession = sessionStorage.getItem('User');
     if (userSession) {
       setIsUserLoggedIn(true);
@@ -49,23 +52,29 @@ export default function MenProducts() {
     } else {
       setIsUserLoggedIn(false);
     }
-  }, [type]);
+  }, []);
+
+  const fetchProducts = useCallback(async (attempt = 0) => {
+    try {
+      setIsLoading(true);
+      const response = await api.get(`/products/category/${type}`);
+      setProducts(response.data);
+      setRecent(response.data.slice(0, 10));
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching products: ', error);
+      if (attempt < maxRetries) {
+        setTimeout(() => fetchProducts(attempt + 1), retryDelay);
+      } else {
+        setIsLoading(false); 
+      }
+    }
+  }, [type, maxRetries, retryDelay]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setIsLoading(true);
-        const response = await api.get(`/products/category/${type}`);
-        setProducts(response.data);
-        setRecent(response.data.slice(0, 10));
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching products: ', error);
-      }
-    };
-
+    checkUserSession();
     fetchProducts();
-  }, [type]);
+  }, [checkUserSession, fetchProducts]);
 
   useEffect(() => {
     const typeItem = typeName.Men.find(item => item.name === type);
@@ -116,17 +125,20 @@ export default function MenProducts() {
     }
 };
 
+if(isLoading){
+  
+}
 
 
   return (
     <div>
       <NavbarUser />
-
       {isLoading ? (
-                <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
-                    <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
-                </div>
-            ) : (<div className="bg-white">
+          <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
+            <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
+          </div>
+        ) : (
+      <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-1 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Recent Drops</h2>
 
