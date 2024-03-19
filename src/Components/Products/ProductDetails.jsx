@@ -106,7 +106,18 @@ export default function ProductDetail() {
                         <div className="mt-6">
                             {/* <p className="text-base text-gray-900">{product.product_Description}</p> */}
                             <hr></hr>
-                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Product Description</h2>
+                            <div className="mt-4 p-3">
+                                <button
+                                    type="button"
+                                    onClick={handleAdd}
+                                    className="relative inline-flex items-center justify-center overflow-hidden rounded-md bg-transparent px-3 py-2 text-md font-semibold text-indigo-600 transition-all duration-300 ease-in-out group"
+                                >
+                                    <span className="relative z-10">Check out product</span>
+                                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-indigo-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+                                </button>
+                            </div>
+
+                            <h2 className="text-2xl font-normal tracking-tight text-gray-900">Product Description</h2>
                             <div className="text-base text-gray-900" dangerouslySetInnerHTML={{ __html: product.product_Description }} />
                         </div>
                     </div>
