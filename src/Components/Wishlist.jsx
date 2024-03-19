@@ -81,8 +81,8 @@ export default function Wishlist() {
     <div>
       <NavbarUser />
       <div className="bg-white">
-        <div className="mt-6 grid p-10 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        <h2 className="text-2xl font-normal tracking-tight text-gray-900">Your Wishlist</h2>
+        <h2 className="text-2xl p-10 font-normal tracking-tight text-gray-900">Your Wishlist</h2>
+        <div className="mt-6 grid px-10 py-2 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.product_id} className="group relative">
               <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none lg:h-80 relative">
