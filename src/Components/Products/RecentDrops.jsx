@@ -219,13 +219,13 @@ function RecentDrops() {
 
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-24">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-10">
                 {showPopup.show && (
                     <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
                         {showPopup.message}
                     </div>
                 )}
-                <h2 className="text-2xl py-2 font-semibold tracking-tight text-gray-900">Recent Drops on Wink Buy</h2>
+                <h2 className="text-sm md:text-xl lg:text-2xl  py-2 font-normal tracking-tight text-gray-700">Recent Drops on Wink Buy</h2>
                 <Carousel
                     swipeable={true}
                     draggable={true}

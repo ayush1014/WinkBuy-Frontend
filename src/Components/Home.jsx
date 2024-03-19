@@ -68,7 +68,7 @@ export default function Home() {
       <div>
         <Advertisements />
       </div>
-      <div className='p-20 md:p-2'>
+      <div className='md:p-2'>
         {adminCheck && (
           <div className="absolute mt-10 top-22 right-16"> {/* Adjust the positioning as needed */}
             <div className='px-8 flex gap-x-8'>
