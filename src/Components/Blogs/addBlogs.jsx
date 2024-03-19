@@ -1,6 +1,7 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
-import NavbarAdmin from '../NavbarAdmin'
+// import NavbarAdmin from '../NavbarAdmin'
+import NavbarUser from '../NavbarUser'
 import api from '../../Config/axios'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -201,7 +202,7 @@ export default function AddBlogs() {
 
     return (
         <>
-            <NavbarAdmin />
+            <NavbarUser />
             {isLoading ? <div className="overlay">
                 <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
             </div> : (

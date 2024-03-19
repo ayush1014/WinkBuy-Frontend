@@ -1,7 +1,7 @@
 
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
-import NavbarAdmin from '../NavbarAdmin'
+import NavbarUser from '../NavbarUser'
 import api from '../../Config/axios'
 import { BounceLoader } from 'react-spinners';
 import ReactQuill from 'react-quill';
@@ -220,7 +220,7 @@ export default function AddProduct() {
 
     return (
         <>
-            <NavbarAdmin />
+            <NavbarUser/>
             {isLoading ? (
                 <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
                     <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
