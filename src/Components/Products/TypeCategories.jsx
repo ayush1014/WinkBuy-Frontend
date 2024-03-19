@@ -76,9 +76,9 @@ export default function TypeCategories() {
     api.get(`/main-category/${type}/categories`)
       .then((response) => {
         const updatedCats = response.data.map(category => {
-          // Find the match in typeName to get the 'show' and 'link' values
           const match = typeName[type]?.find(t => t.name === category.category_name);
           // Include both 'show' for display and 'link' for the href in the mapped object
+          // We now also keep the 'type' to be used in the URL
           return match ? { ...category, show: match.show, link: match.link } : { ...category, show: category.category_name, link: category.category_name };
         });
         setUpdatedCategories(updatedCats);
@@ -96,15 +96,15 @@ export default function TypeCategories() {
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{type} Categories</h2>
           <div className="py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {updatedCategories.map((category, index) => (
-              <a key={index} href={`/${category.link}`} className="group"> {/* Use 'link' for href */}
+              <a key={index} href={`/${type}/${category.link}`} className="group">
                 <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
                     src={category.category_pic || 'https://via.placeholder.com/150'}
-                    alt={`Category: ${category.show}`} // Using 'show' for alt text
+                    alt={`Category: ${category.show}`}
                     className="product-image h-full w-full object-cover object-center group-hover:opacity-75"
                   />
                 </div>
-                <h3 className="mt-4 text-xl text-gray-700">{category.show}</h3> {/* Display 'show' here */}
+                <h3 className="mt-4 text-xl text-gray-700">{category.show}</h3>
               </a>
             ))}
           </div>

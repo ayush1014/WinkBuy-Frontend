@@ -39,12 +39,12 @@ function App() {
           <Route path='/AdminSignup' element={<AdminSignup/>} />
           <Route path='/wishlist' element={<Wishlist/>} />
           <Route path='/categories/:type' element={<TypeCategories/>}/>
-          <Route path='/:type' element={<MenProducts />} />
-          <Route path='/:type' element={<WomenProducts/>}/>
-          <Route path='/:type' element={<HomeDecorProducts/>} />
-          <Route path='/:type' element={<Technology/>}/>
-          <Route path='/:type' element={<Health />} />
-          <Route path='/:type' element={<CarAccessories/>} />
+          <Route path='men/:type' element={<MenProducts />} />
+          <Route path='women/:type' element={<WomenProducts/>}/>
+          <Route path='homeDecor/:type' element={<HomeDecorProducts/>} />
+          <Route path='technology/:type' element={<Technology/>}/>
+          <Route path='health/:type' element={<Health />} />
+          <Route path='car/:type' element={<CarAccessories/>} />
           <Route path='/productDetail/:product_id' element={<ProductDetail/>}/>
           <Route path='/blogs' element={<Blogs/>}/>
           <Route path='/blog/:blogname' element={<BlogsDetails/>}/>

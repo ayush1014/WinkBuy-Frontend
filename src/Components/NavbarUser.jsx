@@ -22,64 +22,64 @@ const TopwearIcon = () => (
 
 
 const men = [
-  { name: 'Topwear', description: 'Amazing men Tees, Jackets, Shirts & more', href: '/MenTopwear', icon: TopwearIcon },
-  { name: 'Bottomwear', description: 'Men Jeans, Trousers, Shorts & more', href: '/MenBottomwear', icon: ShoppingCartIcon },
-  { name: 'Footwear', description: 'Sneakers, Casual shoes, Sports shoes, Flip Flops & more', href: '/MenFootwear', icon: SparklesIcon },
-  { name: 'Sports & Fitness Wear', description: 'Sports shoes, Active T-shirts, Tracksuits, Jackets and Sweatshirts & more', href: '/MenSportsAndFitnessWear', icon: ComputerDesktopIcon },
-  { name: 'Fashion Accessories', description: 'Wallets, Belts, Fragrances, Body Mists, Jewellery, Caps, Hats & more', href: '/MenFashionAccessories', icon: HeartIcon },
-  { name: 'Gifts', description: 'Cologne, Jewellry, Belts, Clothings, Wallets & more', href: '/MenGifts', icon: TruckIcon },
-  { name: 'Gadgets', description: 'Smartwatches, Phone Cases, Fitness bands, Watches, Watch Bands & more', href: '/MenGadgets', icon: TruckIcon },
-  { name: 'Bags & Backpacks', description: 'Bagpacks, Office Bags, Laptop bags, Travelling bags & more', href: '/MenBagsAndBackpacks', icon: TruckIcon },
+  { name: 'Topwear', description: 'Amazing men Tees, Jackets, Shirts & more', href: 'men/MenTopwear', icon: TopwearIcon },
+  { name: 'Bottomwear', description: 'Men Jeans, Trousers, Shorts & more', href: 'men/MenBottomwear', icon: ShoppingCartIcon },
+  { name: 'Footwear', description: 'Sneakers, Casual shoes, Sports shoes, Flip Flops & more', href: 'men/MenFootwear', icon: SparklesIcon },
+  { name: 'Sports & Fitness Wear', description: 'Sports shoes, Active T-shirts, Tracksuits, Jackets and Sweatshirts & more', href: 'men/MenSportsAndFitnessWear', icon: ComputerDesktopIcon },
+  { name: 'Fashion Accessories', description: 'Wallets, Belts, Fragrances, Body Mists, Jewellery, Caps, Hats & more', href: 'men/MenFashionAccessories', icon: HeartIcon },
+  { name: 'Gifts', description: 'Cologne, Jewellry, Belts, Clothings, Wallets & more', href: 'men/MenGifts', icon: TruckIcon },
+  { name: 'Gadgets', description: 'Smartwatches, Phone Cases, Fitness bands, Watches, Watch Bands & more', href: 'men/MenGadgets', icon: TruckIcon },
+  { name: 'Bags & Backpacks', description: 'Bagpacks, Office Bags, Laptop bags, Travelling bags & more', href: 'men/MenBagsAndBackpacks', icon: TruckIcon },
 ]
 const women = [
-  { name: 'Dresses', description: 'Birthday Dresses, Casual Dresses, Prom Dresses, Formal Dresses & more', href: '/Dresses', icon: HomeModernIcon },
-  { name: 'Tops, Tees & Shirts', description: 'Tops, Tees, Blouses, Cardigans, Pullovers, Crop tops & more', href: '/TopsTeesAndShirts', icon: ShoppingCartIcon },
-  { name: 'Bottomwear', description: 'Jeans, Pants, Shorts, Skrits & more', href: '/WomenBottomwear', icon: SparklesIcon },
-  { name: 'Hoodies & Outerwears', description: 'Hoddies, Jackets, Sweaters, Zip ups & more', href: '/WomenHoodiesAndOuterwears', icon: SparklesIcon },
-  { name: 'Footwear', description: 'Heels, Sandals, Flats, Shoes, Boots, Sneakers & more', href: '/WomenFootwear', icon: SparklesIcon },
-  { name: 'Gifts', description: 'Perfumes, Body Mists, Rings, Necklaces, Bracelets, Candels, Gift Hampers & more', href: '/WomenGifts', icon: TruckIcon },
-  { name: 'Sports & Fitness Wear', description: 'Sport Shoes, Sports Clothing, Sports Accessories & more', href: '/WomenSportsAndFitnessWear', icon: ComputerDesktopIcon },
-  { name: 'Beauty & Personal Care', description: 'Skincare, Bodycare, Haircae, Makeups & more', href: '/BeautyAndPersonalCare', icon: HeartIcon },
-  { name: 'Fashion Accessories', description: 'Necklace, Bracelets, Ankelets, Ear Rings & more', href: '/WomenFashionAccessories', icon: TruckIcon },
-  { name: 'Bags, Purses & Handbags', description: 'Handbags, Totebags, Sidebags, Wallets, Purses & more', href: '/BagsPursesAndHandbags', icon: TruckIcon },
+  { name: 'Dresses', description: 'Birthday Dresses, Casual Dresses, Prom Dresses, Formal Dresses & more', href: 'women/Dresses', icon: HomeModernIcon },
+  { name: 'Tops, Tees & Shirts', description: 'Tops, Tees, Blouses, Cardigans, Pullovers, Crop tops & more', href: 'women/TopsTeesAndShirts', icon: ShoppingCartIcon },
+  { name: 'Bottomwear', description: 'Jeans, Pants, Shorts, Skrits & more', href: 'women/WomenBottomwear', icon: SparklesIcon },
+  { name: 'Hoodies & Outerwears', description: 'Hoddies, Jackets, Sweaters, Zip ups & more', href: 'women/WomenHoodiesAndOuterwears', icon: SparklesIcon },
+  { name: 'Footwear', description: 'Heels, Sandals, Flats, Shoes, Boots, Sneakers & more', href: 'women/WomenFootwear', icon: SparklesIcon },
+  { name: 'Gifts', description: 'Perfumes, Body Mists, Rings, Necklaces, Bracelets, Candels, Gift Hampers & more', href: 'women/WomenGifts', icon: TruckIcon },
+  { name: 'Sports & Fitness Wear', description: 'Sport Shoes, Sports Clothing, Sports Accessories & more', href: 'women/WomenSportsAndFitnessWear', icon: ComputerDesktopIcon },
+  { name: 'Beauty & Personal Care', description: 'Skincare, Bodycare, Haircae, Makeups & more', href: 'women/BeautyAndPersonalCare', icon: HeartIcon },
+  { name: 'Fashion Accessories', description: 'Necklace, Bracelets, Ankelets, Ear Rings & more', href: 'women/WomenFashionAccessories', icon: TruckIcon },
+  { name: 'Bags, Purses & Handbags', description: 'Handbags, Totebags, Sidebags, Wallets, Purses & more', href: 'women/BagsPursesAndHandbags', icon: TruckIcon },
 ]
 const homeanddecor = [
-  { name: 'Furniture', description: 'Tables, Chairs, Love Seats, Recliners & many more', href: '/Furniture', icon: HomeModernIcon },
-  { name: 'Photo Frames', description: 'Frames, Polaroid frames, Couple photo frames & more', href: '/PhotoFrames', icon: ShoppingCartIcon },
-  { name: 'Living Room', description: 'Sofas, Recliners, Coffee Tables, TV Units, Lamps, Lights & more decorations', href: '/LivingRoom', icon: ShoppingCartIcon },
-  { name: 'Bedroom', description: 'Bed Frames, Mattresses, Side tables, Night Lamps, Lamps, Lights & more decorations', href: '/Bathroom', icon: ShoppingCartIcon },
-  { name: 'Bathroom', description: 'Bathtub Accessories, Mats, Soap Dispensers, Rugs, Towel Stands & more decorations', href: '/Bedroom', icon: SparklesIcon },
-  { name: 'Kitchen', description: 'Towel Holders, Dispensers, Mats, Racks, Coasters & more', href: '/Kitchen', icon: ComputerDesktopIcon },
-  { name: 'Lights', description: 'Led lights, Neon lights, Artistic Lamps, Smart Bulbs & more', href: '/Lights', icon: HeartIcon },
-  { name: 'Plants', description: 'Indoor Plants, Plant seed, Pet friendly plants, Succulent Plants & more', href: '/Plants', icon: TruckIcon },
-  { name: 'Decorations', description: 'Party Decor, Artifical plats, Indoor String Lights, Birthday Decor, Artistic Paintings, Show Peices & more', href: '/Decorations', icon: TruckIcon },
-  { name: 'Home Decor Gifts', description: 'Showpiece, Paintings, Coffee Mugs, Diffusers & more', href: '/HomeDecorGifts', icon: TruckIcon }
+  { name: 'Furniture', description: 'Tables, Chairs, Love Seats, Recliners & many more', href: 'homeDecor/Furniture', icon: HomeModernIcon },
+  { name: 'Photo Frames', description: 'Frames, Polaroid frames, Couple photo frames & more', href: 'homeDecor/PhotoFrames', icon: ShoppingCartIcon },
+  { name: 'Living Room', description: 'Sofas, Recliners, Coffee Tables, TV Units, Lamps, Lights & more decorations', href: 'homeDecor/LivingRoom', icon: ShoppingCartIcon },
+  { name: 'Bedroom', description: 'Bed Frames, Mattresses, Side tables, Night Lamps, Lamps, Lights & more decorations', href: 'homeDecor/Bathroom', icon: ShoppingCartIcon },
+  { name: 'Bathroom', description: 'Bathtub Accessories, Mats, Soap Dispensers, Rugs, Towel Stands & more decorations', href: 'homeDecor/Bedroom', icon: SparklesIcon },
+  { name: 'Kitchen', description: 'Towel Holders, Dispensers, Mats, Racks, Coasters & more', href: 'homeDecor/Kitchen', icon: ComputerDesktopIcon },
+  { name: 'Lights', description: 'Led lights, Neon lights, Artistic Lamps, Smart Bulbs & more', href: 'homeDecor/Lights', icon: HeartIcon },
+  { name: 'Plants', description: 'Indoor Plants, Plant seed, Pet friendly plants, Succulent Plants & more', href: 'homeDecor/Plants', icon: TruckIcon },
+  { name: 'Decorations', description: 'Party Decor, Artifical plats, Indoor String Lights, Birthday Decor, Artistic Paintings, Show Peices & more', href: 'homeDecor/Decorations', icon: TruckIcon },
+  { name: 'Home Decor Gifts', description: 'Showpiece, Paintings, Coffee Mugs, Diffusers & more', href: 'homeDecor/HomeDecorGifts', icon: TruckIcon }
 ]
 const tech = [
-  { name: 'Phones', description: 'Iphone, Samsung, Nothing, Motorola, Asus & more', href: '/Phones', icon: HomeModernIcon },
-  { name: 'Tablets', description: 'Ipads, Galaxy Tabs, Asus & more', href: '/Tablets', icon: ShoppingCartIcon },
-  { name: 'Smart Devices', description: 'Alexa, Home Pod, Vivint, Ecobee & more', href: '/SmartDevices', icon: SparklesIcon },
-  { name: 'Laptop & Tablet Accessories', description: 'Laptop Covers, Tablet Cases, Covers, Stickers, Stylus, Apple Pencil & more', href: '/LaptopAndTabletAccessories', icon: ComputerDesktopIcon },
-  { name: 'Phone Accessories', description: 'Phone Cases, Wireless Chargers, Adapters, Holders & more', href: '/PhoneAccessories', icon: HeartIcon },
-  { name: 'Laptops', description: 'MacBook, Alienware, Samsung, Chromebooks & more', href: '/Laptops', icon: TruckIcon },
-  { name: 'Television', description: 'Samsung, LG, Sony, Hisense, Fire TV & more', href: '/Televisions', icon: TruckIcon },
-  { name: 'Monitors', description: 'Curved screens monitors, Portable Monitors, Touch Screens & more', href: '/Monitors', icon: TruckIcon },
-  { name: 'Gaming', description: 'Playstation 5, XBox, Nintendo & more', href: '/Gaming', icon: TruckIcon },
-  { name: 'Softwares', description: 'VPN Services, Antiviruses, Hosting Platforms, MS Office & more', href: '/Softwares', icon: TruckIcon },
+  { name: 'Phones', description: 'Iphone, Samsung, Nothing, Motorola, Asus & more', href: 'technology/Phones', icon: HomeModernIcon },
+  { name: 'Tablets', description: 'Ipads, Galaxy Tabs, Asus & more', href: 'technology/Tablets', icon: ShoppingCartIcon },
+  { name: 'Smart Devices', description: 'Alexa, Home Pod, Vivint, Ecobee & more', href: 'technology/SmartDevices', icon: SparklesIcon },
+  { name: 'Laptop & Tablet Accessories', description: 'Laptop Covers, Tablet Cases, Covers, Stickers, Stylus, Apple Pencil & more', href: 'technology/LaptopAndTabletAccessories', icon: ComputerDesktopIcon },
+  { name: 'Phone Accessories', description: 'Phone Cases, Wireless Chargers, Adapters, Holders & more', href: 'technology/PhoneAccessories', icon: HeartIcon },
+  { name: 'Laptops', description: 'MacBook, Alienware, Samsung, Chromebooks & more', href: 'technology/Laptops', icon: TruckIcon },
+  { name: 'Television', description: 'Samsung, LG, Sony, Hisense, Fire TV & more', href: 'technology/Televisions', icon: TruckIcon },
+  { name: 'Monitors', description: 'Curved screens monitors, Portable Monitors, Touch Screens & more', href: 'technology/Monitors', icon: TruckIcon },
+  { name: 'Gaming', description: 'Playstation 5, XBox, Nintendo & more', href: 'technology/Gaming', icon: TruckIcon },
+  { name: 'Softwares', description: 'VPN Services, Antiviruses, Hosting Platforms, MS Office & more', href: 'technology/Softwares', icon: TruckIcon },
 ]
 const healthandfitness = [
-  { name: 'Scales & Measure', description: 'Smart Scales, BMR Scales, Food Scales, Tape Measures & more', href: '/ScalesAndMeasure', icon: HomeModernIcon },
-  { name: 'Nutrition, Supplements & Shakers', description: 'Protien Powders, Multi Vitamins, Creatine, Pre Workouts, Shaker bottles & more', href: '/Nutrition', icon: ShoppingCartIcon },
-  { name: 'Workout Equiments', description: 'Treadmills, Dumbbells, Barbell Pads, Resistance Bands & more', href: '/WorkoutEquiments', icon: SparklesIcon },
-  { name: 'Fitness Gadgets', description: 'Fitness Bands, Massage Guns, Fitness Tracker & more', href: '/FitnessGadgets', icon: ComputerDesktopIcon },
-  { name: 'Books, Fitness Courses & Live Coaches', description: 'Amazing fitness books, Lessons, Fitness Courses & many more', href: '/Books', icon: TruckIcon },
+  { name: 'Scales & Measure', description: 'Smart Scales, BMR Scales, Food Scales, Tape Measures & more', href: 'health/ScalesAndMeasure', icon: HomeModernIcon },
+  { name: 'Nutrition, Supplements & Shakers', description: 'Protien Powders, Multi Vitamins, Creatine, Pre Workouts, Shaker bottles & more', href: 'health/Nutrition', icon: ShoppingCartIcon },
+  { name: 'Workout Equiments', description: 'Treadmills, Dumbbells, Barbell Pads, Resistance Bands & more', href: 'health/WorkoutEquiments', icon: SparklesIcon },
+  { name: 'Fitness Gadgets', description: 'Fitness Bands, Massage Guns, Fitness Tracker & more', href: 'health/FitnessGadgets', icon: ComputerDesktopIcon },
+  { name: 'Books, Fitness Courses & Live Coaches', description: 'Amazing fitness books, Lessons, Fitness Courses & many more', href: 'health/Books', icon: TruckIcon },
 ]
 const carAccessories = [
-  { name: 'Cleaning', description: 'Mircrofiber Rugs, Car Vaccums, Vent Cleaning Slimes, Car Polish & more', href: '/Cleaning', icon: HomeModernIcon },
-  { name: 'Fragrance', description: 'Little trees, Febreze care, Yankee Candels & more', href: '/Fragrance', icon: ShoppingCartIcon },
-  { name: 'Dash Cams', description: 'Live dash cams with night visions, wifi & more', href: '/DashCams', icon: SparklesIcon },
-  { name: 'Phone Holders', description: 'Magnetic phone holders, Window attachments, holders with chargers & more ', href: '/PhoneHolders', icon: ComputerDesktopIcon },
-  { name: 'Car Needs', description: 'More car needs as Storage bins, Smart Chargings & many more', href: '/CarNeeds', icon: TruckIcon },
+  { name: 'Cleaning', description: 'Mircrofiber Rugs, Car Vaccums, Vent Cleaning Slimes, Car Polish & more', href: 'car/Cleaning', icon: HomeModernIcon },
+  { name: 'Fragrance', description: 'Little trees, Febreze care, Yankee Candels & more', href: 'car/Fragrance', icon: ShoppingCartIcon },
+  { name: 'Dash Cams', description: 'Live dash cams with night visions, wifi & more', href: 'car/DashCams', icon: SparklesIcon },
+  { name: 'Phone Holders', description: 'Magnetic phone holders, Window attachments, holders with chargers & more ', href: 'car/PhoneHolders', icon: ComputerDesktopIcon },
+  { name: 'Car Needs', description: 'More car needs as Storage bins, Smart Chargings & many more', href: 'car/CarNeeds', icon: TruckIcon },
 ]
 const callsToAction = [
   { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -143,6 +143,7 @@ export default function NavbarUser() {
 
   const handleWinkBlogs = () => {
     navigate('/blogs')
+    setMobileMenuOpen(false); 
   }
 
   useEffect(() => {
@@ -161,13 +162,24 @@ export default function NavbarUser() {
   };
 
   const handleWishlist = () => {
-    if (!isUserLoggedIn){
+    if (!isUserLoggedIn) {
       navigate('/login')
+      setMobileMenuOpen(false); 
     }
-    else{
+    else {
       navigate('/wishlist')
+      setMobileMenuOpen(false); 
     }
   }
+
+  const handleNavigate = (path) => {
+    navigate(`/${path}`);
+  };
+
+  const handleMobileNavigate = (path) => {
+    navigate(`/${path}`);
+    setMobileMenuOpen(false); 
+  };
 
   return (
     <div>
@@ -226,10 +238,13 @@ export default function NavbarUser() {
                                 {React.createElement(item.icon, { className: "h-6 w-6 text-gray-600 group-hover:text-indigo-600", "aria-hidden": "true" })}
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -280,10 +295,13 @@ export default function NavbarUser() {
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -334,10 +352,13 @@ export default function NavbarUser() {
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -388,10 +409,13 @@ export default function NavbarUser() {
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -443,10 +467,13 @@ export default function NavbarUser() {
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -497,10 +524,13 @@ export default function NavbarUser() {
                                 <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                               </div> */}
                               <div>
-                                <a href={item.href} className="font-semibold text-gray-900">
+                                <button
+                                  className="font-semibold text-gray-900"
+                                  onClick={() => handleNavigate(item.href)}
+                                >
                                   {item.name}
                                   <span className="absolute inset-0" />
-                                </a>
+                                </button>
                                 <p className="mt-1 text-gray-600">{item.description}</p>
                               </div>
                             </div>
@@ -582,6 +612,16 @@ export default function NavbarUser() {
                   <div className="mt-6 flow-root">
                     <div className="-my-6 divide-y divide-gray-500/10">
                       <div className="space-y-2 py-6">
+                        <div className="">
+                          <a
+                            href="#"
+                            className="-mx-3 block rounded-lg px-2 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            onClick={handleWinkBlogs}
+                            style={{ textDecoration: 'none' }}
+                          >
+                            Wink Blogs
+                          </a>
+                        </div>
                         <Disclosure as="div" className="-mx-3">
                           {({ open }) => (
                             <>
@@ -594,15 +634,13 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...men].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
@@ -620,15 +658,13 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...women].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
@@ -646,15 +682,13 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...homeanddecor].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
@@ -672,15 +706,13 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...tech].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
@@ -698,15 +730,13 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...healthandfitness].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
@@ -724,31 +754,30 @@ export default function NavbarUser() {
                               </Disclosure.Button>
                               <Disclosure.Panel className="mt-2 space-y-2">
                                 {[...carAccessories].map((item) => (
-                                  <Disclosure.Button
+                                  <button
                                     key={item.name}
-                                    as="a"
-                                    style={{ textDecoration: 'none' }}
-                                    href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                    onClick={() => handleMobileNavigate(item.href)}
+                                    className="block w-full text-left rounded-lg py-2 pl-6 pr-3 text-md font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                   >
                                     {item.name}
-                                  </Disclosure.Button>
+                                  </button>
                                 ))}
                               </Disclosure.Panel>
                             </>
                           )}
                         </Disclosure>
+                        <div className="">
+                          <a
+                            href="#"
+                            className="-mx-3 block rounded-lg px-2.5 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            onClick={handleWishlist}
+                            style={{ textDecoration: 'none' }}
+                          >
+                            Wishlist
+                          </a>
+                        </div>
                       </div>
-                      <div className="py-6">
-                        <a
-                          href="#"
-                          className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          onClick={handleWishlist}
-                          style={{ textDecoration: 'none' }}
-                        >
-                          Wishlist
-                        </a>
-                      </div>
+
                       {
                         isUserLoggedIn ? (
                           <button className="text-md font-semibold leading-6 text-gray-900" onClick={handleSignOut}>

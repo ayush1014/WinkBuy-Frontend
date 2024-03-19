@@ -76,8 +76,8 @@ export default function WomenProducts() {
   const toggleWishlistStatus = async (event, productId) => {
     event.preventDefault();
     if (!isUserLoggedIn) {
-      navigate('/login');
-      return;
+        navigate('/login');
+        return;
     }
 
     const userSession = sessionStorage.getItem('User');
@@ -88,32 +88,32 @@ export default function WomenProducts() {
     const method = isInWishlist ? 'delete' : 'post';
 
     try {
-      const response = await api({
-        method,
-        url: endpoint,
-        data: {
-          userId: user.username,
-          productId: productId,
-        },
-      });
+        const response = await api({
+            method,
+            url: endpoint,
+            data: {
+                userId: user.username,
+                productId: productId,
+            },
+        });
 
-      if (response.status === 200 || response.status === 201) {
-        const newWishlist = new Set(addedToWishlist);
-        if (isInWishlist) {
-          newWishlist.delete(productId);
-        } else {
-          newWishlist.add(productId);
+        if (response.status === 200 || response.status === 201) {
+            const newWishlist = new Set(addedToWishlist);
+            if (isInWishlist) {
+                newWishlist.delete(productId);
+            } else {
+                newWishlist.add(productId);
+            }
+            setAddedToWishlist(newWishlist);
+            setShowPopup({ show: true, message: isInWishlist ? 'Removed from wishlist!' : 'Added to wishlist!' });
         }
-        setAddedToWishlist(newWishlist);
-        setShowPopup({ show: true, message: isInWishlist ? 'Removed from wishlist!' : 'Added to wishlist!' });
-      }
     } catch (error) {
-      console.error('Error toggling wishlist status:', error);
-      setShowPopup({ show: true, message: error.response?.data?.message || 'Error processing your request' });
+        console.error('Error toggling wishlist status:', error);
+        setShowPopup({ show: true, message: error.response?.data?.message || 'Error processing your request' });
     } finally {
-      setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
+        setTimeout(() => setShowPopup({ show: false, message: '' }), 3000);
     }
-  };
+};
 
 
 
@@ -122,7 +122,7 @@ export default function WomenProducts() {
       <NavbarUser />
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-semi tracking-tight text-gray-900">Recent Drops</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Recent Drops</h2>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {recent.map((product) => (
