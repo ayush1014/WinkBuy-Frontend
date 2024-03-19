@@ -53,7 +53,7 @@ export default function AdminSignup() {
                             </h2>
                             <p className="mt-2 text-sm leading-6 text-gray-500">
                                 Already a member?{' '}
-                                <a href="/AdminLogin" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
                                     Log In
                                 </a>
                             </p>
