@@ -21,9 +21,10 @@ export default function ProductDetail() {
             try {
                 const response = await api.get(`/products/${product_id}`);
                 console.log(response)
-                if (!response.statusText) {
-                    throw new Error('Product not found');
-                }
+                // if (!response.statusText) {
+                //     console.log('error fetching product');
+                //     throw new Error('Product not found');
+                // }
                 setProduct(response.data);
             } catch (err) {
                 setError(err.message);
@@ -36,7 +37,7 @@ export default function ProductDetail() {
     }, [product_id]);
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+    // if (error) return <div>Error: {error}</div>;
     // if (!product) return <div>Product not found</div>;
 
     const renderStars = (rating) => {
