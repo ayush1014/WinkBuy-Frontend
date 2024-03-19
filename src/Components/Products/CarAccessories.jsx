@@ -141,7 +141,7 @@ export default function CarAccessories() {
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{catname}</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">${product.product_Price}</p>
+                  {/* <p className="text-sm font-medium text-gray-900">${product.product_Price}</p> */}
                   {showPopup.show && (
                     <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
                       {showPopup.message}
@@ -187,7 +187,7 @@ export default function CarAccessories() {
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{catname}</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">${product.product_Price}</p>
+                  {/* <p className="text-sm font-medium text-gray-900">${product.product_Price}</p> */}
                   {showPopup.show && (
                     <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
                       {showPopup.message}

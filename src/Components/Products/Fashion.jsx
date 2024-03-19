@@ -49,7 +49,7 @@ export default function Fashion() {
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{product.category.category_name}</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">${product.product_Price}</p>
+                  {/* <p className="text-sm font-medium text-gray-900">${product.product_Price}</p> */}
                   
                 </div>
               </div>

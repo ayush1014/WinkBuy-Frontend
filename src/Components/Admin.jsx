@@ -4,6 +4,7 @@ import NavbarAdmin from './NavbarAdmin';
 import Categories from './Catagories';
 import AdminCategories from './AdminCatagories';
 import { useNavigate } from 'react-router-dom';
+import NavbarUser from './NavbarUser';
 
 function Admin() {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Admin() {
     return (
         <div>
             {/* admin */}
-            <NavbarAdmin />
+            <NavbarUser />
             <div className="absolute top-22 right-16"> {/* Adjust the positioning as needed */}
                 <div className='px-8 flex gap-x-8'>
                     <button
