@@ -64,7 +64,7 @@ export default function HomeDecorProducts() {
     };
 
     fetchProducts();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const typeItem = typeName.HomeAndDecor.find(item => item.name === type);

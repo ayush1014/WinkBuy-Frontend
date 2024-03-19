@@ -63,7 +63,7 @@ export default function Technology() {
     };
 
     fetchProducts();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const typeItem = typeName.Technology.find(item => item.name === type);

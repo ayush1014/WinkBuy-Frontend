@@ -60,7 +60,7 @@ export default function CarAccessories() {
     };
 
     fetchProducts();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const typeItem = typeName.CarAccessories.find(item => item.name === type);

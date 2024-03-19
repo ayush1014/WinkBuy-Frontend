@@ -62,7 +62,7 @@ export default function Health() {
     };
 
     fetchProducts();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const typeItem = typeName.HealthAndFitness.find(item => item.name === type);

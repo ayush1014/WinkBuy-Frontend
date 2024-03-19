@@ -64,7 +64,7 @@ export default function WomenProducts() {
     };
 
     fetchProducts();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const typeItem = typeName.Women.find(item => item.name === type);
