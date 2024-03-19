@@ -6,86 +6,87 @@ import './ImageContainer.css'
 
 const typeName = {
   Men: [
-    { name: 'MenTopwear', show: 'Topwear' },
-    { name: 'MenBottomwear', show: 'Bottom Wear' },
-    { name: 'MenFootwear', show: 'Footwear' },
-    { name: 'MenSportsAndFitnessWear', show: 'Sports & Fitness Wear' },
-    { name: 'MenFashionAccessories', show: 'Fashion Accessories' },
-    { name: 'MenGifts', show: 'Gifts' },
-    { name: 'MenGadgets', show: 'Gadgets' },
-    { name: 'MenBagsAndBackpacks', show: 'Bags & Backpacks' },
+    { name: 'MenTopwear', show: 'Topwear', link: 'MenTopwear' },
+    { name: 'MenBottomwear', show: 'Bottom Wear', link: 'MenBottomwear' },
+    { name: 'MenFootwear', show: 'Footwear', link: 'MenFootwear' },
+    { name: 'MenSportsAndFitnessWear', show: 'Sports & Fitness Wear', link: 'MenSportsAndFitnessWear' },
+    { name: 'MenFashionAccessories', show: 'Fashion Accessories', link: 'MenFashionAccessories' },
+    { name: 'MenGifts', show: 'Gifts', link: 'MenGifts' },
+    { name: 'MenGadgets', show: 'Gadgets', link: 'MenGadgets' },
+    { name: 'MenBagsAndBackpacks', show: 'Bags & Backpacks', link: 'MenBagsAndBackpacks' },
   ],
   Women: [
-    { name: 'Dresses', show: 'Dressess' },
-    { name: 'TopsTeesAndShirts', show: 'Tops, Tees & Shirts' },
-    { name: 'WomenBottomwear', show: 'Bottomwear' },
-    { name: 'WomenFootwear', show: 'Footwear' },
-    { name: 'WomenHoodiesAndOuterwears', show: 'Hoodies & Outerwears' },
-    { name: 'WomenGifts', show: 'Gifts' },
-    { name: 'WomenSportsAndFitnessWear', show: 'Sports & Fitness Wear' },
-    { name: 'BeautyAndPersonalCare', show: 'Beauty & Personal Care' },
-    { name: 'WomenFashionAccessories', show: 'Fashion Accessories' },
-    { name: 'BagsPursesAndHandbags', show: 'Purses & Handbags' },
+    { name: 'Dresses', show: 'Dressess', link: 'Dresses' },
+    { name: 'TopsTeesAndShirts', show: 'Tops, Tees & Shirts', link: 'TopsTeesAndShirts' },
+    { name: 'WomenBottomwear', show: 'Bottomwear', link: 'WomenBottomwear' },
+    { name: 'WomenFootwear', show: 'Footwear', link: 'WomenFootwear' },
+    { name: 'WomenHoodiesAndOuterwears', show: 'Hoodies & Outerwears', link: 'WomenHoodiesAndOuterwears' },
+    { name: 'WomenGifts', show: 'Gifts', link: 'WomenGifts' },
+    { name: 'WomenSportsAndFitnessWear', show: 'Sports & Fitness Wear', link: 'WomenSportsAndFitnessWear' },
+    { name: 'BeautyAndPersonalCare', show: 'Beauty & Personal Care', link: 'BeautyAndPersonalCare' },
+    { name: 'WomenFashionAccessories', show: 'Fashion Accessories', link: 'BeautyAndPersonalCare' },
+    { name: 'BagsPursesAndHandbags', show: 'Purses & Handbags', link: 'BagsPursesAndHandbags' },
   ],
   HomeAndDecor: [
-    { name: 'Furniture', show: 'Furnitures' },
-    { name: 'PhotoFrames', show: 'Photo Frames' },
-    { name: 'LivingRoom', show: 'Living Room' },
-    { name: 'Bathroom', show: 'Bathroom' },
-    { name: 'Bedroom', show: 'Bedroom' },
-    { name: 'Kitchen', show: 'Kitchen' },
-    { name: 'Lights', show: 'Lights' },
-    { name: 'Plants', show: 'Plants' },
-    { name: 'Decorations', show: 'Decorations' },
-    { name: 'HomeDecorGifts', show: 'Home Decor Gifts' },
+    { name: 'Furniture', show: 'Furnitures', link: 'Furniture' },
+    { name: 'PhotoFrames', show: 'Photo Frames', link: 'PhotoFrames' },
+    { name: 'LivingRoom', show: 'Living Room', link: 'LivingRoom' },
+    { name: 'Bathroom', show: 'Bathroom', link: 'Bathroom' },
+    { name: 'Bedroom', show: 'Bedroom', link: 'Bedroom' },
+    { name: 'Kitchen', show: 'Kitchen', link: 'Kitchen' },
+    { name: 'Lights', show: 'Lights', link: 'Lights' },
+    { name: 'Plants', show: 'Plants', link: 'Plants' },
+    { name: 'Decorations', show: 'Decorations', link: 'Decorations' },
+    { name: 'HomeDecorGifts', show: 'Home Decor Gifts', link: 'HomeDecorGifts' },
   ],
   Technology: [
-    { name: 'Phones', show: 'Phones' },
-    { name: 'Tablets', show: 'Tablets' },
-    { name: 'SmartDevices', show: 'Smart Devices' },
-    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories' },
-    { name: 'PhoneAccessories', show: 'Phone Accessories' },
-    { name: 'Laptops', show: 'Laptops' },
-    { name: 'Televisions', show: 'Televisions' },
-    { name: 'Monitors', show: 'Monitors' },
-    { name: 'Gaming', show: 'Gaming' },
-    { name: 'Softwares', show: 'Softwares' },
+    { name: 'Phones', show: 'Phones', link: 'Phones' },
+    { name: 'Tablets', show: 'Tablets', link: 'Tablets' },
+    { name: 'SmartDevices', show: 'Smart Devices', link: 'SmartDevices' },
+    { name: 'LaptopAndTabletAccessories', show: 'Laptop & Tablet Accessories', link: 'LaptopAndTabletAccessories' },
+    { name: 'PhoneAccessories', show: 'Phone Accessories', link: 'PhoneAccessories' },
+    { name: 'Laptops', show: 'Laptops', link: 'Laptops' },
+    { name: 'Televisions', show: 'Televisions', link: 'Televisions' },
+    { name: 'Monitors', show: 'Monitors', link: 'Monitors' },
+    { name: 'Gaming', show: 'Gaming', link: 'Gaming' },
+    { name: 'Softwares', show: 'Softwares', link: 'Softwares' },
   ],
   HealthAndFitness: [
-    { name: 'ScalesAndMeasure', show: 'Scales & Measure' },
-    { name: 'Nutrition', show: 'Nutrition' },
-    { name: 'WorkoutEquiments', show: 'Workout Equiments' },
-    { name: 'FitnessGadgets', show: 'Fitness Gadgets' },
-    { name: 'Supplements', show: 'Supplements' },
-    { name: 'Books', show: 'Books, Fitness Courses & Live Coaches' },
+    { name: 'ScalesAndMeasure', show: 'Scales & Measure', link: 'ScalesAndMeasure' },
+    { name: 'Nutrition', show: 'Nutrition', link: 'Nutrition' },
+    { name: 'WorkoutEquiments', show: 'Workout Equiments', link: 'WorkoutEquiments' },
+    { name: 'FitnessGadgets', show: 'Fitness Gadgets', link: 'FitnessGadgets' },
+    { name: 'Supplements', show: 'Supplements', link: 'Supplements' },
+    { name: 'Books', show: 'Books, Fitness Courses & Live Coaches', link: 'Books' },
   ],
   CarAccessories: [
-    { name: 'Cleaning', show: 'Cleaning' },
-    { name: 'Fragrance', show: 'Fragrance' },
-    { name: 'DashCams', show: 'Dash Cams' },
-    { name: 'PhoneHolders', show: 'Phone Holders' },
-    { name: 'CarNeeds', show: 'Car Needs' },
+    { name: 'Cleaning', show: 'Cleaning', link: 'Cleaning' },
+    { name: 'Fragrance', show: 'Fragrance', link: 'Fragrance' },
+    { name: 'DashCams', show: 'Dash Cams', link: 'DashCams' },
+    { name: 'PhoneHolders', show: 'Phone Holders', link: 'PhoneHolders' },
+    { name: 'CarNeeds', show: 'Car Needs', link: 'CarNeeds' },
   ]
 }
 
 export default function TypeCategories() {
-  const [categories, setCategories] = useState([]);
-
+  const [updatedCategories, setUpdatedCategories] = useState([]);
   const { type } = useParams();
 
   useEffect(() => {
     api.get(`/main-category/${type}/categories`)
       .then((response) => {
-        const updatedCategories = response.data.map(category => {
+        const updatedCats = response.data.map(category => {
+          // Find the match in typeName to get the 'show' and 'link' values
           const match = typeName[type]?.find(t => t.name === category.category_name);
-          return match ? { ...category, category_name: match.show } : category;
+          // Include both 'show' for display and 'link' for the href in the mapped object
+          return match ? { ...category, show: match.show, link: match.link } : { ...category, show: category.category_name, link: category.category_name };
         });
-        setCategories(updatedCategories);
+        setUpdatedCategories(updatedCats);
       })
       .catch((error) => {
         console.error('Error fetching categories:', error);
       });
-  }, [type]);
+  }, [type]); // Include 'type' as a dependency
 
   return (
     <>
@@ -94,24 +95,21 @@ export default function TypeCategories() {
         <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{type} Categories</h2>
           <div className="py-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {categories.map((category) => (
-              <>
-                <a key={category.category_name} href={`/${category.category_name}`} className="group">
-                  <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                    <img
-                      src={category.category_pic || 'https://via.placeholder.com/150'} // Placeholder in case there's no image
-                      alt={`Category: ${category.category_name}`}
-                      className="product-image h-full w-full object-cover object-center group-hover:opacity-75"
-                    />
-                  </div>
-                  <h3 className="mt-4 text-xl text-gray-700">{category.category_name}</h3>
-                  {/* You can display more information here if you want */}
-                </a>
-              </>
+            {updatedCategories.map((category, index) => (
+              <a key={index} href={`/${category.link}`} className="group"> {/* Use 'link' for href */}
+                <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <img
+                    src={category.category_pic || 'https://via.placeholder.com/150'}
+                    alt={`Category: ${category.show}`} // Using 'show' for alt text
+                    className="product-image h-full w-full object-cover object-center group-hover:opacity-75"
+                  />
+                </div>
+                <h3 className="mt-4 text-xl text-gray-700">{category.show}</h3> {/* Display 'show' here */}
+              </a>
             ))}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
