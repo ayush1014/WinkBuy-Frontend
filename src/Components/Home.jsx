@@ -8,6 +8,7 @@ import RecentBlogs from './Blogs/RecentBlogs'
 import './Home.css'
 import { useNavigate } from 'react-router-dom'
 import { HeartIcon } from '@heroicons/react/24/outline';
+import InfiniteProduct from './Products/InfiniteProduct'
 
 
 export default function Home() {
@@ -61,13 +62,13 @@ export default function Home() {
               aria-hidden="true"
             />
           </>
-          
+
         )}
       </div>
 
       <div className='md:p-2'>
         {adminCheck && (
-          <div className="absolute mt-10 top-10 right-6 lg:top-14 right-20"> 
+          <div className="absolute mt-10 top-10 right-6 lg:top-14 right-20">
             <div className='px-8 flex gap-x-8'>
               <button
                 type="button"
@@ -99,6 +100,9 @@ export default function Home() {
       </div>
       <div className='mt-20'>
         <Catagories />
+      </div>
+      <div>
+        <InfiniteProduct />
       </div>
       <div>
         <Footer />
