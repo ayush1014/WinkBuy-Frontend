@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import NavbarUser from './NavbarUser';
 import Footer from './Footer';
 import api from '../Config/axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Products/ImageContainer.css'
 import { TrashIcon } from '@heroicons/react/24/outline'; // For an outline icon
+
 
 
 
@@ -25,8 +26,11 @@ const typeName = {
 export default function Wishlist() {
 
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState({ show: false, message: '' });
 
-  const handleRemoveFromWishlist = async (productId) => {
+  const handleRemoveFromWishlist = async (event, productId) => {
+    event.stopPropagation();
     try {
       const userSession = sessionStorage.getItem('User');
       const user = JSON.parse(userSession);
@@ -45,8 +49,8 @@ export default function Wishlist() {
 
       if (response.status === 200) {
         console.log('Product removed from wishlist');
-        // Optionally, refresh the wishlist items or remove the item from the state
         setProducts(products.filter(product => product.product_id !== productId));
+        setShowPopup({ show: true, message: 'Removed from wishlist!' });
       } else {
         console.error('Failed to remove product from wishlist');
       }
@@ -67,7 +71,6 @@ export default function Wishlist() {
           setProducts(response.data);
         } else {
           console.error('User not logged in');
-          // Handle not logged in scenario, maybe navigate to login page
         }
       } catch (error) {
         console.error('Error fetching wishlist products: ', error);
@@ -83,9 +86,17 @@ export default function Wishlist() {
       <div className="bg-white">
         <h2 className="text-2xl p-10 font-normal tracking-tight text-gray-900">Your Wishlist</h2>
         <div className="mt-6 grid px-10 py-2 grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {showPopup.show && (
+            <div className="fixed top-20 right-16 bg-black text-white px-4 py-2 rounded-md">
+              {showPopup.message}
+            </div>
+          )}
           {products.map((product) => (
             <div key={product.product_id} className="group relative">
-              <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none lg:h-80 relative">
+              <div
+                className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none lg:h-80 relative cursor-pointer"
+                onClick={() => navigate(`/productDetail/${product.product_id}`)}
+              >
                 <img
                   src={product.product_pic}
                   alt={product.product_name}
@@ -93,17 +104,15 @@ export default function Wishlist() {
                 />
                 <TrashIcon
                   className="h-6 w-6 text-red-600 absolute top-3 right-3 cursor-pointer"
-                  onClick={() => handleRemoveFromWishlist(product.product_id)}
+                  onClick={(event) => handleRemoveFromWishlist(event, product.product_id)}
                   aria-hidden="true"
                 />
               </div>
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    {product.product_name}
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.category?.category_name}</p>
-                </div>
+              <div onClick={() => navigate(`/productDetail/${product.product_id}`)}>
+                <h3 className="text-sm text-gray-700">
+                  {product.product_name}
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">{product.category_name}</p>
               </div>
             </div>
           ))}
