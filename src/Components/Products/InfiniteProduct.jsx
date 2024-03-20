@@ -140,6 +140,7 @@ export default function InfiniteProduct() {
                                     />
                                 )}
                             </div>
+                            {/*added loading */}
                             {isLoading && products.length % 4 === 0 && (
                                 <div className="col-span-1 lg:col-span-4">
                                     <Loader />
