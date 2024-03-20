@@ -84,7 +84,7 @@ export default function InfiniteProduct() {
                 dataLength={visibleProducts.length}
                 next={fetchProducts}
                 hasMore={hasMore}
-                loader={<Loader/>}
+                loader={<h4>Loading...</h4>}
                 endMessage={
                     <p style={{fontStyle:'normal', textAlign: 'center' }}>
                         <b>You have seen it all</b>
