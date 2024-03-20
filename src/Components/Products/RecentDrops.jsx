@@ -199,7 +199,7 @@ function RecentDrops() {
                     <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
                 </div>
             ) : (
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-10">
+                <div className="max-w-full sm:py-10">
                     {showPopup.show && (
                         <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
                             {showPopup.message}
