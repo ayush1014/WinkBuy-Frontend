@@ -14,23 +14,34 @@ export default function InfiniteProduct() {
     const [products, setProducts] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchProducts = useCallback(async () => {
+        if (!hasMore) return;
+
         try {
+            setIsLoading(true);
             const response = await api.get(`/products?page=${page}&limit=${productsPerPage}`);
-            if (response.data.products.length > 0) {
-                setProducts(prevProducts => [...prevProducts, ...response.data.products]);
-                setPage(page + 1); 
+            if (response.data.products && response.data.products.length > 0) {
+                setProducts(prevProducts => {
+                    const allProducts = [...prevProducts, ...response.data.products];
+                    const uniqueProducts = Array.from(new Set(allProducts.map(p => p.product_id)))
+                        .map(id => {
+                            return allProducts.find(p => p.product_id === id)
+                        });
+                    return uniqueProducts;
+                });
+                setPage(prevPage => prevPage + 1);
             } else {
-                setHasMore(false); 
+                setHasMore(false);
             }
         } catch (error) {
             console.error("Failed to fetch products:", error);
-            setHasMore(false);
+        } finally {
+            setIsLoading(false);
         }
-    }, [page]);
+    }, [page, productsPerPage]);
 
-    // Fetch initial products on component mount
     useEffect(() => {
         fetchProducts();
     }, [fetchProducts]);
@@ -84,7 +95,7 @@ export default function InfiniteProduct() {
                 dataLength={products.length}
                 next={fetchProducts}
                 hasMore={hasMore}
-                loader={<Loader/>}
+                // loader={<Loader />}
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
                         <b>You have seen it all</b>
@@ -92,7 +103,7 @@ export default function InfiniteProduct() {
                 }
             >
                 <div className="mt-6 px-10 py-20 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {products.map(product => (
+                    {products.map((product, index) => (
                         <div key={product.product_id} className="group relative">
                             <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80 relative">
                                 <img
@@ -129,6 +140,11 @@ export default function InfiniteProduct() {
                                     />
                                 )}
                             </div>
+                            {isLoading && products.length % 4 === 0 && (
+                                <div className="col-span-1 lg:col-span-4">
+                                    <Loader />
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
