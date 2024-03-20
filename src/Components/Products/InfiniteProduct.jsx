@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import api from '../../Config/axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
+import Loader from './loader';
 
 export default function InfiniteProduct() {
     const [allProducts, setAllProducts] = useState([]);
@@ -83,9 +84,9 @@ export default function InfiniteProduct() {
                 dataLength={visibleProducts.length}
                 next={fetchProducts}
                 hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
+                loader={<Loader/>}
                 endMessage={
-                    <p style={{ textAlign: 'center' }}>
+                    <p style={{fontStyle:'normal', textAlign: 'center' }}>
                         <b>You have seen it all</b>
                     </p>
                 }
