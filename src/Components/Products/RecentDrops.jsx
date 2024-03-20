@@ -36,8 +36,7 @@ function RecentDrops() {
         try {
             setIsLoading(true);
             const response = await api.get('/products');
-            // Assuming your API returns the array of products inside a "products" key
-            const productsArray = response.data.products || []; // Fallback to an empty array if not found
+            const productsArray = response.data.products || []; 
             setProductDrop(productsArray.slice(0, 6));
             setIsLoading(false);
         } catch (error) {
@@ -45,7 +44,7 @@ function RecentDrops() {
             if (attempt < maxRetries) {
                 setTimeout(() => fetchProducts(attempt + 1), retryDelay);
             } else {
-                setIsLoading(false); // Stop trying after max attempts
+                setIsLoading(false); 
             }
         }
     }, [maxRetries, retryDelay]);
@@ -86,7 +85,7 @@ function RecentDrops() {
         const user = JSON.parse(userSession);
 
         const isInWishlist = addedToWishlist.has(productId);
-        const endpoint = isInWishlist ? '/remove' : '/add'; // Ensure endpoint matches your backend
+        const endpoint = isInWishlist ? '/remove' : '/add'; 
         const method = isInWishlist ? 'delete' : 'post';
 
         try {
