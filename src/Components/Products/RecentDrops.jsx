@@ -205,7 +205,7 @@ function RecentDrops() {
                             {showPopup.message}
                         </div>
                     )}
-                    <h2 className="text-sm md:text-xl lg:text-2xl  py-2 font-normal tracking-tight text-gray-700">Recent Drops on Wink Buy</h2>
+                    <h2 className="text-sm md:text-xl lg:text-2xl  px-4 py-2 font-normal tracking-tight text-gray-700">Recent Drops on Wink Buy</h2>
                     <Carousel
                         swipeable={true}
                         draggable={true}
@@ -221,7 +221,7 @@ function RecentDrops() {
                         containerClass=""
                         removeArrowOnDeviceType={["tablet", "mobile"]}
                         dotListClass="custom-dot-list-style"
-                        itemClass=""
+                        itemClass="px-2"
                     >
                         {productDrop.map((product) => (
                             <a key={product.product_id} href={`/productDetail/${product.product_id}`} className="group">

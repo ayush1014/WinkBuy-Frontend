@@ -26,8 +26,8 @@ export default function RecentBlogs() {
 
     return (
         <>
-            <div className="bg-white py- sm:py-1">
-                <div className="mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="bg-white sm:py-1">
+                <div className="max-w-full px-4 lg:px-8">
                     <h2 className="text-sm md:text-xl lg:text-2xl font-normal tracking-tight text-gray-700">Recent Drops on Wink Blogs</h2>
                     <div className="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         {posts.map((post) => (
