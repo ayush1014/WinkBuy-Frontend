@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import api from '../../Config/axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
@@ -6,35 +6,35 @@ import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Loader from './loader';
 
 export default function InfiniteProduct() {
-    const [allProducts, setAllProducts] = useState([]);
-    const [visibleProducts, setVisibleProducts] = useState([]);
-    const [hasMore, setHasMore] = useState(true);
     const [showPopup, setShowPopup] = useState({ show: false, message: '' });
     const [addedToWishlist, setAddedToWishlist] = useState(new Set());
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
     const productsPerPage = 4;
+    const [products, setProducts] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
+    const [page, setPage] = useState(1);
 
-    const fetchProducts = async () => {
-        if (!hasMore) return;
-
+    const fetchProducts = useCallback(async () => {
         try {
-            if (allProducts.length === 0) {
-                const response = await api.get(`/products`);
-                setAllProducts(response.data);
-                setVisibleProducts(response.data.slice(0, productsPerPage));
+            const response = await api.get(`/products?page=${page}&limit=${productsPerPage}`);
+            if (response.data.products.length > 0) {
+                setProducts(prevProducts => [...prevProducts, ...response.data.products]);
+                setPage(page + 1); 
             } else {
-                const nextProducts = allProducts.slice(visibleProducts.length, visibleProducts.length + productsPerPage);
-                setVisibleProducts(prev => [...prev, ...nextProducts]);
-                if (nextProducts.length < productsPerPage) {
-                    setHasMore(false);
-                }
+                setHasMore(false); 
             }
         } catch (error) {
             console.error("Failed to fetch products:", error);
             setHasMore(false);
         }
-    };
+    }, [page]);
+
+    // Fetch initial products on component mount
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
+
 
     const toggleWishlistStatus = async (event, productId) => {
         event.preventDefault();
@@ -81,18 +81,18 @@ export default function InfiniteProduct() {
     return (
         <div>
             <InfiniteScroll
-                dataLength={visibleProducts.length}
+                dataLength={products.length}
                 next={fetchProducts}
                 hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
+                loader={<Loader/>}
                 endMessage={
-                    <p style={{fontStyle:'normal', textAlign: 'center' }}>
+                    <p style={{ textAlign: 'center' }}>
                         <b>You have seen it all</b>
                     </p>
                 }
             >
                 <div className="mt-6 px-10 py-20 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {visibleProducts.map(product => (
+                    {products.map(product => (
                         <div key={product.product_id} className="group relative">
                             <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80 relative">
                                 <img

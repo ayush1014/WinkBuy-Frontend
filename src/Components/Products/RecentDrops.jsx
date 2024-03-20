@@ -29,14 +29,16 @@ function RecentDrops() {
     const [addedToWishlist, setAddedToWishlist] = useState(new Set());
     const [showPopup, setShowPopup] = useState({ show: false, message: '' });
     const [isLoading, setIsLoading] = useState(false);
-    const maxRetries = 20; 
-    const retryDelay = 2000; 
+    const maxRetries = 20;
+    const retryDelay = 2000;
 
     const fetchProducts = useCallback(async (attempt = 0) => {
         try {
             setIsLoading(true);
             const response = await api.get('/products');
-            setProductDrop(response.data.slice(0, 6));
+            // Assuming your API returns the array of products inside a "products" key
+            const productsArray = response.data.products || []; // Fallback to an empty array if not found
+            setProductDrop(productsArray.slice(0, 6));
             setIsLoading(false);
         } catch (error) {
             console.error('Error fetching products:', error);
@@ -47,6 +49,7 @@ function RecentDrops() {
             }
         }
     }, [maxRetries, retryDelay]);
+
 
     useEffect(() => {
         fetchProducts();
@@ -78,14 +81,14 @@ function RecentDrops() {
             navigate('/login');
             return;
         }
-    
+
         const userSession = sessionStorage.getItem('User');
         const user = JSON.parse(userSession);
-    
+
         const isInWishlist = addedToWishlist.has(productId);
         const endpoint = isInWishlist ? '/remove' : '/add'; // Ensure endpoint matches your backend
         const method = isInWishlist ? 'delete' : 'post';
-    
+
         try {
             const response = await api({
                 method,
@@ -95,7 +98,7 @@ function RecentDrops() {
                     productId: productId,
                 },
             });
-    
+
             if (response.status === 200 || response.status === 201) {
                 const newWishlist = new Set(addedToWishlist);
                 if (isInWishlist) {
@@ -192,61 +195,61 @@ function RecentDrops() {
 
     return (
         <div className="bg-white">
-           {isLoading ? (
+            {isLoading ? (
                 <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center">
                     <BounceLoader size={60} color={"#123abc"} loading={isLoading} />
                 </div>
             ) : (
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-10">
-                {showPopup.show && (
-                    <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
-                        {showPopup.message}
-                    </div>
-                )}
-                <h2 className="text-sm md:text-xl lg:text-2xl  py-2 font-normal tracking-tight text-gray-700">Recent Drops on Wink Buy</h2>
-                <Carousel
-                    swipeable={true}
-                    draggable={true}
-                    showDots={false}
-                    responsive={responsive}
-                    ssr={true}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={300}
-                    keyBoardControl={true}
-                    customTransition="transform 800ms ease-in-out"
-                    transitionDuration={3000}
-                    containerClass=""
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
-                    dotListClass="custom-dot-list-style"
-                    itemClass=""
-                >
-                    {productDrop.map((product) => (
-                        <a key={product.product_id} href={`/productDetail/${product.product_id}`} className="group">
-                            <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img
-                                    src={product.product_pic}
-                                    alt={product.product_name}
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                />
-                            </div>
-                            <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
-                            <p className="mt-1 text-xs font-medium text-gray-900">{product.categoryId}</p>
-                            {addedToWishlist.has(product.product_id) ? (
-                                <div className="absolute top-3 right-3">
-                                    <TrashIcon className="h-6 w-6 text-gray-600 cursor-pointer" onClick={(event) => toggleWishlistStatus(event, product.product_id)} />
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 sm:py-10">
+                    {showPopup.show && (
+                        <div className="fixed top-16 right-16 bg-black text-white px-4 py-2 rounded-md">
+                            {showPopup.message}
+                        </div>
+                    )}
+                    <h2 className="text-sm md:text-xl lg:text-2xl  py-2 font-normal tracking-tight text-gray-700">Recent Drops on Wink Buy</h2>
+                    <Carousel
+                        swipeable={true}
+                        draggable={true}
+                        showDots={false}
+                        responsive={responsive}
+                        ssr={true}
+                        infinite={true}
+                        autoPlay={true}
+                        autoPlaySpeed={300}
+                        keyBoardControl={true}
+                        customTransition="transform 800ms ease-in-out"
+                        transitionDuration={3000}
+                        containerClass=""
+                        removeArrowOnDeviceType={["tablet", "mobile"]}
+                        dotListClass="custom-dot-list-style"
+                        itemClass=""
+                    >
+                        {productDrop.map((product) => (
+                            <a key={product.product_id} href={`/productDetail/${product.product_id}`} className="group">
+                                <div className="image-container aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-0 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                    <img
+                                        src={product.product_pic}
+                                        alt={product.product_name}
+                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                    />
                                 </div>
-                            ) : (
-                                <HeartIcon
-                                    className="h-8 w-8 text-red-600 absolute top-3 right-3 cursor-pointer"
-                                    onClick={(event) => toggleWishlistStatus(event, product.product_id)}
-                                    aria-hidden="true"
-                                />
-                            )}
-                        </a>
-                    ))}
-                </Carousel>
-            </div>)}
+                                <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
+                                <p className="mt-1 text-xs font-medium text-gray-900">{product.categoryId}</p>
+                                {addedToWishlist.has(product.product_id) ? (
+                                    <div className="absolute top-3 right-3">
+                                        <TrashIcon className="h-6 w-6 text-gray-600 cursor-pointer" onClick={(event) => toggleWishlistStatus(event, product.product_id)} />
+                                    </div>
+                                ) : (
+                                    <HeartIcon
+                                        className="h-8 w-8 text-red-600 absolute top-3 right-3 cursor-pointer"
+                                        onClick={(event) => toggleWishlistStatus(event, product.product_id)}
+                                        aria-hidden="true"
+                                    />
+                                )}
+                            </a>
+                        ))}
+                    </Carousel>
+                </div>)}
         </div>
     );
 }
