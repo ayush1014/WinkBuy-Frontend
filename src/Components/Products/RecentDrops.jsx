@@ -232,8 +232,8 @@ function RecentDrops() {
                                         className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                     />
                                 </div>
-                                <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
-                                <p className="mt-1 text-xs font-medium text-gray-900">{product.categoryId}</p>
+                                <h3 className="mt-4 text-center text-sm text-gray-700">{product.product_name}</h3>
+                                <p className="mt-1 text-center text-xs font-medium text-gray-900">{product.categoryId}</p>
                                 {addedToWishlist.has(product.product_id) ? (
                                     <div className="absolute top-3 right-3">
                                         <TrashIcon className="h-6 w-6 text-gray-600 cursor-pointer" onClick={(event) => toggleWishlistStatus(event, product.product_id)} />
