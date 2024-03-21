@@ -68,7 +68,7 @@ export default function BlogsDetails() {
                 </div>
             ) : (
                 <div className='flex justify-center bg-white'>
-                    <div className="sticky-sidebar mt-52 w-40 hidden lg:block">
+                    <div className="sticky-sidebar mt-24 px-2 w-48 hidden lg:block">
                         <nav className="Sidebar flex flex-1 flex-col" aria-label="Sidebar">
                             <h6 className="sidebar-header">Jump to: </h6>
                             <ul role="list" className="-mx-4 space-y-1">
